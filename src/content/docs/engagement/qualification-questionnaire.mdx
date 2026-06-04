@@ -6,7 +6,12 @@ sidebar:
   order: 2
 ---
 
-import { Steps } from '@astrojs/starlight/components';
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+<Aside type="tip" title="Download the workfile">
+  <a href={`${import.meta.env.BASE_URL}templates/engagement/qualification-questionnaire.docx`}>Qualification questionnaire (DOCX)</a>
+</Aside>
+
 
 ## When to use this
 Use in the **first or second customer call**, before committing to a discovery workshop. Output also feeds directly into the [Module B.1.1 Cloud Networking Requirements Assessment](../../module-b/1-1-cloud-networking-requirements-assessment/) evidence.

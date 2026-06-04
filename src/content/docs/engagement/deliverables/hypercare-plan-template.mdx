@@ -5,6 +5,12 @@ sidebar:
   label: "Hypercare Plan Template"
   order: 5
 ---
+import { Aside } from '@astrojs/starlight/components';
+
+<Aside type="tip" title="Download the workfile">
+  <a href={`${import.meta.env.BASE_URL}templates/deliverables/hypercare-plan-template.docx`}>Hypercare plan template (DOCX)</a>
+</Aside>
+
 
 ## How to use
 Hypercare is the **bridge between delivery and BAU**. Standard duration: 30 days; extendable in 14-day increments by mutual agreement.
@@ -21,6 +27,7 @@ Hypercare is the **bridge between delivery and BAU**. Standard duration: 30 days
 - **Extension policy:** 14-day increments by mutual written agreement
 
 ## 2. On-call rota
+
 | Week | Primary | Backup | Customer liaison |
 |---|---|---|---|
 | 1 | | | |
@@ -31,6 +38,7 @@ Hypercare is the **bridge between delivery and BAU**. Standard duration: 30 days
 Coverage: business hours by default; SEV-1 24/7.
 
 ## 3. Severity definitions
+
 | Severity | Definition | Response | Restoration target |
 |---|---|---|---|
 | SEV-1 | Production down / no traffic | 15 min | 4 h |
@@ -39,6 +47,7 @@ Coverage: business hours by default; SEV-1 24/7.
 | SEV-4 | Question / cosmetic | 1 business day | n/a |
 
 ## 4. Defect classification
+
 | Class | Definition | Disposition |
 |---|---|---|
 | A | Design defect — fix during hypercare at delivery cost |

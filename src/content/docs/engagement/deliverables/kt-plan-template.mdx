@@ -5,6 +5,12 @@ sidebar:
   label: "KT Plan Template"
   order: 4
 ---
+import { Aside } from '@astrojs/starlight/components';
+
+<Aside type="tip" title="Download the workfile">
+  <a href={`${import.meta.env.BASE_URL}templates/deliverables/kt-plan-template.docx`}>KT plan template (DOCX)</a>
+</Aside>
+
 
 ## How to use
 Drives the formal handover from the delivery team to the customer's BAU team. Combined with [A.3.2 Plan for Skilling](../../module-a/3-2-plan-for-skilling/) evidence.
@@ -16,6 +22,7 @@ Drives the formal handover from the delivery team to the customer's BAU team. Co
 **Document owner:** \{Author} · **Version:** 0.1 · **Date:** \{YYYY-MM-DD}
 
 ## 1. Audience
+
 | Role | Names | Existing skill level | Target skill level |
 |---|---|---|---|
 | Network ops | | Basic | Intermediate |
@@ -44,6 +51,7 @@ Drives the formal handover from the delivery team to the customer's BAU team. Co
 | App teams | [Networking fundamentals](https://learn.microsoft.com/training/paths/azure-networking-fundamentals/) |
 
 ## 4. Post-deployment documentation index
+
 | Document | Location | Owner |
 |---|---|---|
 | HLD | | |
@@ -54,6 +62,7 @@ Drives the formal handover from the delivery team to the customer's BAU team. Co
 | Recorded KT sessions | | |
 
 ## 5. Acceptance
+
 | Role | Skill validation method | Sign-off date | Signatory |
 |---|---|---|---|
 | Network ops | Live runbook walkthrough scored ≥ 80% | | |

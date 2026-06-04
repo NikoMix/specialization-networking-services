@@ -5,6 +5,12 @@ sidebar:
   label: "Runbook Template"
   order: 3
 ---
+import { Aside } from '@astrojs/starlight/components';
+
+<Aside type="tip" title="Download the workfile">
+  <a href={`${import.meta.env.BASE_URL}templates/deliverables/runbook-template.docx`}>Runbook template (DOCX)</a>
+</Aside>
+
 
 ## How to use
 The runbook is the **operational truth** for the customer's BAU team. Procedures are executable, not narrative — every step is unambiguous and includes a rollback gate.
@@ -16,6 +22,7 @@ The runbook is the **operational truth** for the customer's BAU team. Procedures
 **Document owner:** \{Author} · **Version:** 0.1 · **Date:** \{YYYY-MM-DD} · **Status:** Draft
 
 ## 1. Roles and contacts
+
 | Role | Primary | Backup | Channel |
 |---|---|---|---|
 
@@ -81,6 +88,7 @@ The runbook is the **operational truth** for the customer's BAU team. Procedures
 - Emergency-break-glass procedure (documented, audited)
 
 ## 10. Escalation matrix
+
 | Severity | Response | Restoration | Escalation path |
 |---|---|---|---|
 | SEV-1 | 15 min | 4 h | Customer ops → MSP on-call → Microsoft Premier |

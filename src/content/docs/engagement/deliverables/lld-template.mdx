@@ -5,6 +5,12 @@ sidebar:
   label: "LLD Template"
   order: 2
 ---
+import { Aside } from '@astrojs/starlight/components';
+
+<Aside type="tip" title="Download the workfile">
+  <a href={`${import.meta.env.BASE_URL}templates/deliverables/lld-template.docx`}>LLD template (DOCX)</a>
+</Aside>
+
 
 ## How to use
 Companion to the HLD. Captures every implementation-grade detail an engineer needs to deploy.
@@ -16,14 +22,17 @@ Companion to the HLD. Captures every implementation-grade detail an engineer nee
 **Document owner:** \{Author} · **Version:** 0.1 · **Date:** \{YYYY-MM-DD} · **Status:** Draft
 
 ## 1. Subscription / management group placement
+
 | Subscription | Mgmt group | Purpose |
 |---|---|---|
 
 ## 2. Address plan
+
 | VNet / hub | CIDR | Region | Notes |
 |---|---|---|---|
 
 ## 3. Subnet plan (per VNet)
+
 | Subnet | CIDR | NSG | UDR | Delegated to |
 |---|---|---|---|---|
 
@@ -32,6 +41,7 @@ For each NSG: priority, direction, source, dest, port, protocol, action, descrip
 Use ASGs over IP literals where possible.
 
 ## 5. UDR tables
+
 | Route table | Subnet associations | Destinations | Next hop |
 |---|---|---|---|
 
@@ -46,16 +56,19 @@ Use ASGs over IP literals where possible.
 Reference a parent policy + child policies per landing zone.
 
 ## 7. DNS zone delegation
+
 | Zone | Type | Linked to | Resolver config |
 |---|---|---|---|
 | `privatelink.blob.core.windows.net` | Private | Hub VNet | — |
 | `corp.contoso.com` | On-prem | Conditional fwd via Private Resolver inbound | — |
 
 ## 8. RBAC matrix
+
 | Role assignment | Scope | Principal | Justification |
 |---|---|---|---|
 
 ## 9. IaC module list
+
 | Module | Source | Version | Owner |
 |---|---|---|---|
 | `hub-vnet` | internal | 1.0.0 | Network |
