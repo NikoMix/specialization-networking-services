@@ -1,0 +1,63 @@
+---
+title: "PaaS isolation"
+description: Private Endpoints + Private DNS + DNS Private Resolver to remove PaaS public exposure.
+sidebar:
+  label: "PaaS isolation"
+  order: 5
+---
+
+## Context
+Use when the customer needs to **eliminate public PaaS endpoints** (Storage, SQL, Key Vault, Cosmos, etc.) and ensure on-prem name resolution works for those private endpoints.
+
+## Diagram
+
+```
+[On-prem client] → DNS query for storage.blob.core.windows.net
+        │
+        ▼
+[On-prem DNS] → conditional fwd → [Azure DNS Private Resolver — inbound endpoint]
+        │
+        ▼ resolved via
+[Private DNS zone: privatelink.blob.core.windows.net]
+        │
+        ▼ A record →
+[Private Endpoint NIC in spoke VNet]
+        │
+        ▼
+[Storage account — public access disabled]
+```
+
+## Component table
+
+| Component | Configuration | Notes |
+|---|---|---|
+| Private Endpoint per PaaS resource | Subnet in spoke | One NIC per resource |
+| Private DNS zone | `privatelink.*` (per service) | Linked to hub VNet |
+| DNS Private Resolver | Inbound + outbound endpoints | Bridges on-prem ↔ Azure DNS |
+| Public network access | **Disabled** at the PaaS resource | Enforce via Azure Policy |
+| Policy | `deny-public-network-access` | Azure Policy built-in |
+
+## Data flow narrative
+
+- App in spoke → resolves PaaS FQDN → CNAME → privatelink zone → A → private IP in spoke
+- On-prem client → conditional forwarder to Private Resolver inbound → recurses to Azure DNS → returns private IP
+- All PaaS traffic stays on the Microsoft backbone — no public internet
+
+## IaC starter
+- [Private Endpoint DNS integration scenarios](https://learn.microsoft.com/azure/private-link/private-endpoint-dns)
+- ALZ policy initiative: `Deploy-Private-DNS-Zones`
+
+## Known limitations
+
+- A separate Private DNS zone per PaaS service (40+ zones in mature estates)
+- Private Resolver has per-endpoint QPS limits
+- Some PaaS services don't yet support Private Endpoints — check service-by-service
+
+## When to choose
+- Regulatory requirement for no public PaaS exposure
+- Zero-trust posture
+- Hybrid customers needing on-prem ↔ private endpoint resolution
+
+## When NOT to choose
+- Customer is fully cloud-only with no DNS authority on-prem (Private DNS alone suffices)
+- Greenfield workload where service endpoints + firewall rules meet the requirement

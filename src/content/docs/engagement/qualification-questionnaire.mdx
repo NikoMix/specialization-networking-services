@@ -1,0 +1,136 @@
+---
+title: "Customer Qualification Questionnaire"
+description: Structured questionnaire to qualify a customer for an Azure networking engagement and to seed the B.1.1 assessment artifact.
+sidebar:
+  label: "Qualification Questionnaire"
+  order: 2
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+## When to use this
+Use in the **first or second customer call**, before committing to a discovery workshop. Output also feeds directly into the [Module B.1.1 Cloud Networking Requirements Assessment](../../module-b/1-1-cloud-networking-requirements-assessment/) evidence.
+
+## Inputs you need from the customer
+
+| Input | From whom |
+|---|---|
+| Network ops lead's contact | Customer sponsor |
+| Most recent network topology (high-level) | Customer network team |
+| Compliance / sovereignty obligations | Customer security / compliance lead |
+| Approved suppliers / NVAs | Customer architecture board |
+
+## Step-by-step
+
+Walk through every section below in order. **Capture answers in the customer's own words.** Do not skip sections — a "not applicable" answer is still evidence.
+
+### 1. Current connectivity
+
+<Steps>
+1. Existing MPLS / SD-WAN / ExpressRoute circuits and bandwidths
+2. Carriers and peering locations
+3. ExpressRoute SKU and tier (Standard, Premium, Direct)
+4. Site-to-site / point-to-site VPN posture
+5. Current pain points (latency, outages, change-control friction)
+</Steps>
+
+### 2. Global footprint
+
+<Steps>
+1. Azure regions in use today
+2. Regions planned in the next 12 months
+3. Paired-region strategy (or absence of one)
+4. Data-residency / sovereignty constraints
+5. Cross-region latency budgets per workload
+</Steps>
+
+### 3. Segmentation requirements
+
+<Steps>
+1. Environment isolation (prod / non-prod / dev) — how today, how desired
+2. Tenant isolation (multi-tenant SaaS / shared-service patterns)
+3. Regulated workloads (PCI / HIPAA / sovereignty)
+4. Zero-trust posture today (and target)
+5. Approved segmentation primitives (NSG / ASG / Firewall policy / 3rd-party NVA)
+</Steps>
+
+### 4. Internet exposure
+
+<Steps>
+1. Public-endpoint inventory (current — count and risk-tier)
+2. WAF posture today (Azure / Cloudflare / Akamai / Imperva / none)
+3. DDoS history — incidents, mitigation today, DDoS Protection tier
+4. TLS termination strategy
+5. Identity-aware proxy / private-access posture for internal apps
+</Steps>
+
+### 5. Hybrid identity / on-prem dependencies
+
+<Steps>
+1. Data centre locations and roles
+2. Active Directory topology (forests, domains, sites)
+3. DNS authority (on-prem AD-integrated, Infoblox, BIND, other)
+4. Identity sync / federation posture (Entra Connect / Entra Cloud Sync)
+5. Latency-sensitive on-prem dependencies
+</Steps>
+
+### 6. Workload mix
+
+<Steps>
+1. IaaS / PaaS split (rough %)
+2. Kubernetes footprint (AKS, ARO, self-managed) and CNI choice
+3. SAP, AVD, AVS adjacency
+4. Public-PaaS data exposure (Storage, SQL, Cosmos) — Private Endpoint coverage today
+5. Egress-heavy workloads (data analytics, backups, replication)
+</Steps>
+
+### 7. Operating model
+
+<Steps>
+1. Who owns the network — central / federated / per-BU
+2. Change windows and approval gates
+3. Approved Network Virtual Appliances (NVAs)
+4. ITSM / change-management tooling (ServiceNow, Jira SM, Remedy)
+5. Day-2 runbook maturity
+</Steps>
+
+### 8. Compliance & audit drivers
+
+<Steps>
+1. Frameworks in scope (ISO 27001, NIST 800-53, SOC 2, PCI DSS, country-specific sovereignty)
+2. Customer-facing audit obligations (financial services / health / public sector)
+3. Log-retention and SIEM requirements
+4. Internal audit / security-architecture review cadence
+</Steps>
+
+### 9. Observability today
+
+<Steps>
+1. Existing SIEM (Sentinel, Splunk, Elastic, QRadar, Chronicle)
+2. NetOps tooling (SolarWinds, ThousandEyes, Kentik, Catchpoint)
+3. NSG Flow Logs adoption today
+4. Connection Monitor / Network Insights adoption today
+5. Alert-routing pattern (ChatOps, PagerDuty, ITSM)
+</Steps>
+
+### 10. Migration / greenfield indicator
+
+<Steps>
+1. Landing-zone status — none / partial / Azure Landing Zone Accelerator deployed / brownfield
+2. Pace of migration vs greenfield workloads
+3. Sponsoring programme (Azure Migrate / MAP / CAF / Azure Essentials)
+4. Existing IaC posture (Bicep / Terraform / ARM / Azure portal only)
+5. Pre-existing partner network design or Microsoft FastTrack engagement
+</Steps>
+
+## Output: customer-ready deliverable
+
+A **completed questionnaire document** (PDF or Word) with answers captured per section. This becomes the foundation of:
+
+- The B.1.1 Cloud Networking Requirements Assessment evidence
+- The discovery-workshop pre-read
+- The HLD's "Context and constraints" section
+
+## Reuse & contribute back
+
+If you found a question that consistently changed the engagement direction, raise a **Template Improvement** issue and add it to the canonical questionnaire here.

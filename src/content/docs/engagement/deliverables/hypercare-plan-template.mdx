@@ -1,0 +1,73 @@
+---
+title: "Hypercare Plan Template"
+description: 30-day hypercare framework covering rota, severities, exit criteria, defect classification, and handover.
+sidebar:
+  label: "Hypercare Plan Template"
+  order: 5
+---
+
+## How to use
+Hypercare is the **bridge between delivery and BAU**. Standard duration: 30 days; extendable in 14-day increments by mutual agreement.
+
+---
+
+# \{Customer} — Hypercare Plan
+
+**Document owner:** \{Author} · **Version:** 0.1 · **Date:** \{YYYY-MM-DD}
+
+## 1. Hypercare window
+- **Start date:** \{Go-live + 1 day}
+- **Initial duration:** 30 calendar days
+- **Extension policy:** 14-day increments by mutual written agreement
+
+## 2. On-call rota
+| Week | Primary | Backup | Customer liaison |
+|---|---|---|---|
+| 1 | | | |
+| 2 | | | |
+| 3 | | | |
+| 4 | | | |
+
+Coverage: business hours by default; SEV-1 24/7.
+
+## 3. Severity definitions
+| Severity | Definition | Response | Restoration target |
+|---|---|---|---|
+| SEV-1 | Production down / no traffic | 15 min | 4 h |
+| SEV-2 | Significant degradation / partial outage | 30 min | 8 h |
+| SEV-3 | Minor issue / workaround exists | 4 h | 2 business days |
+| SEV-4 | Question / cosmetic | 1 business day | n/a |
+
+## 4. Defect classification
+| Class | Definition | Disposition |
+|---|---|---|
+| A | Design defect — fix during hypercare at delivery cost |
+| B | Configuration drift — fix during hypercare at delivery cost |
+| C | Customer-induced change — billable change request |
+| D | Enhancement — backlog for next engagement |
+
+## 5. Daily / weekly cadence
+- **Daily standup:** 15 min — open incidents, change asks, blockers
+- **Weekly steering:** 30 min — defect register, exit-criteria status, lessons
+
+## 6. Exit criteria
+All of:
+- [ ] Zero open SEV-1 in last 7 days
+- [ ] Zero open SEV-2 in last 7 days
+- [ ] All Class-A defects resolved
+- [ ] Runbook validated by customer team in live execution ≥ 2 times
+- [ ] KT sign-off complete (see [KT plan](../kt-plan-template/))
+- [ ] Customer signs hypercare-end acceptance
+
+## 7. Handover sign-off
+
+| Sign-off | Name | Role | Date | Signature |
+|---|---|---|---|---|
+| Customer sponsor | | | | |
+| Customer ops lead | | | | |
+| Delivery lead | | | | |
+
+## 8. Post-hypercare
+- Defects (Class A/B) carried over land in the warranty period
+- Open enhancements transition to the next engagement backlog
+- Lesson-learned issues raised in the innersource repo

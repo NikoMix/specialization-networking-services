@@ -1,0 +1,75 @@
+---
+title: "B.3.1 – Cloud Networking Scenarios"
+description: Evidence requirements for control B.3.1 — implemented cloud connectivity in production for one of the five workload scenarios.
+sidebar:
+  label: "3.1 Cloud Networking Scenarios"
+  order: 4
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+## What the Auditor Checks
+
+The auditor verifies you have **implemented cloud connectivity for at least one (1) customer** in production, covering one of the five scenarios:
+
+1. Secure network infrastructure
+2. On-prem and branch connectivity
+3. Remote work at scale
+4. Secure global app delivery
+5. 5G and edge computing
+
+**Typical questions:**
+- Walk me through this customer's production deployment.
+- Which of the five scenarios does it implement?
+- Show me the design and as-built / SOW that prove production sequence.
+
+---
+
+## Required Evidence Checklist
+
+| # | Evidence Item | Accepted Formats | Status |
+|---|---|---|---|
+| 1 | **At least two (2)** of the document types below for the chosen customer | PDF, Word, Visio | ⬜ |
+
+### Acceptable document types (need ≥ 2 of)
+
+- Signed Statements of Work (SOWs) for relevant projects
+- Solution design documents for all projects
+- Project plan and migration / deployment sequence
+- Architecture diagrams
+- High-level designs (HLDs) and low-level designs (LLDs)
+- As-built documentation
+
+> One (1) customer with production deployment within the last **18 months**.
+
+<Aside type="tip">
+  Pair an HLD with the as-built doc — this proves the **entire sequence of the project, including design and production deployment**, which is the auditor's exact language.
+</Aside>
+
+---
+
+## Evidence Guidance
+
+### Chosen scenario
+State at the top of the evidence index which scenario is being demonstrated. The auditor will probe scenario-specific design choices (e.g., for *secure global app delivery* — Front Door / WAF / App Gateway; for *on-prem and branch connectivity* — ExpressRoute / VPN / VWAN).
+
+### Signed SOWs
+Sanitise the customer name if needed, but keep the signatures and dates visible.
+
+---
+
+## Evidence Status
+
+| Item | Owner | Status | Last Updated | Notes |
+|---|---|---|---|---|
+| Scenario chosen / declared | | ⬜ Not started | | |
+| Doc type 1 (e.g., SOW) | | ⬜ Not started | | |
+| Doc type 2 (e.g., As-built) | | ⬜ Not started | | |
+
+---
+
+## Common Gaps
+
+- **One document type only:** Two is the minimum; choose two that together prove design + production.
+- **PoC presented as production:** PoC / Pilot only counts if explicitly permitted by this checklist and documented with sign-off — Networking requires production go-live.
+- **Customer engagement &gt; 18 months old:** Pick a fresher engagement.

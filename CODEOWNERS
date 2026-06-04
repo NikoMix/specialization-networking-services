@@ -1,0 +1,23 @@
+# Default reviewer for any change
+*       @NikoMix
+
+# Module A — Cloud Foundation generic controls
+/src/content/docs/module-a/                              @NikoMix
+
+# Module B — Networking-specific controls
+/src/content/docs/module-b/                              @NikoMix
+
+# Engagement playbook
+/src/content/docs/engagement/                            @NikoMix
+/src/content/docs/engagement/reference-architectures/    @NikoMix
+/src/content/docs/engagement/deliverables/               @NikoMix
+
+# Innersource governance
+/src/content/docs/innersource/                           @NikoMix
+/CONTRIBUTING.md                                         @NikoMix
+/CODEOWNERS                                              @NikoMix
+
+# Build / CI
+/.github/workflows/                                      @NikoMix
+/astro.config.mjs                                        @NikoMix
+/package.json                                            @NikoMix

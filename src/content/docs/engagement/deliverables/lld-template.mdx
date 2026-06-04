@@ -1,0 +1,85 @@
+---
+title: "LLD Template"
+description: Low-Level Design template for an Azure networking engagement.
+sidebar:
+  label: "LLD Template"
+  order: 2
+---
+
+## How to use
+Companion to the HLD. Captures every implementation-grade detail an engineer needs to deploy.
+
+---
+
+# \{Customer} — Azure Networking Low-Level Design
+
+**Document owner:** \{Author} · **Version:** 0.1 · **Date:** \{YYYY-MM-DD} · **Status:** Draft
+
+## 1. Subscription / management group placement
+| Subscription | Mgmt group | Purpose |
+|---|---|---|
+
+## 2. Address plan
+| VNet / hub | CIDR | Region | Notes |
+|---|---|---|---|
+
+## 3. Subnet plan (per VNet)
+| Subnet | CIDR | NSG | UDR | Delegated to |
+|---|---|---|---|---|
+
+## 4. NSG / ASG matrices
+For each NSG: priority, direction, source, dest, port, protocol, action, description.
+Use ASGs over IP literals where possible.
+
+## 5. UDR tables
+| Route table | Subnet associations | Destinations | Next hop |
+|---|---|---|---|
+
+## 6. Firewall rule taxonomy
+- Application rules (FQDN-based)
+- Network rules (IP-based)
+- NAT rules
+- Threat intel mode: Alert or Deny
+- TLS inspection scope (Premium only)
+- IDPS mode
+
+Reference a parent policy + child policies per landing zone.
+
+## 7. DNS zone delegation
+| Zone | Type | Linked to | Resolver config |
+|---|---|---|---|
+| `privatelink.blob.core.windows.net` | Private | Hub VNet | — |
+| `corp.contoso.com` | On-prem | Conditional fwd via Private Resolver inbound | — |
+
+## 8. RBAC matrix
+| Role assignment | Scope | Principal | Justification |
+|---|---|---|---|
+
+## 9. IaC module list
+| Module | Source | Version | Owner |
+|---|---|---|---|
+| `hub-vnet` | internal | 1.0.0 | Network |
+| `firewall-policy` | internal | 1.0.0 | Security |
+| `private-dns-zones` | ALZ | latest | Platform |
+
+## 10. ExpressRoute / VPN details
+- Circuits: provider, peering location, bandwidth, SKU
+- Peering config (private peering, MSEE ASN, customer ASN)
+- BGP MD5 secret (referenced from Key Vault — NOT inline)
+- VPN: PSK reference, IKEv2 profile, BGP config
+
+## 11. Bastion / jump host config
+- Per-region Bastion
+- AAD integration
+- Native client + tunneling enabled?
+
+## 12. Diagnostics + monitoring
+- Diagnostic settings per resource
+- Log Analytics workspace target
+- NSG flow log v2, retention, Traffic Analytics enabled
+- Connection Monitor probes
+
+## 13. Cost-control configuration
+- Budgets per scope
+- Alerts at 50% / 80% / 100%
+- Reserved capacity decisions

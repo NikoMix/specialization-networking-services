@@ -1,0 +1,62 @@
+---
+title: "Virtual WAN — Secured Virtual Hub"
+description: Multi-region VWAN + Secured Virtual Hub + ExpressRoute — Microsoft-managed transit.
+sidebar:
+  label: "VWAN — Secured Hub"
+  order: 2
+---
+
+## Context
+Use for **multi-region** customers, large branch footprints, or customers that want Microsoft to manage the transit. Secured Virtual Hub adds Azure Firewall integration as a managed-service inside the hub.
+
+## Diagram
+
+```
+[Branch SD-WAN] ─┐
+[On-prem DC] ────┼── [VWAN Hub — Region A] ── (auto any-to-any) ── [VWAN Hub — Region B]
+[Remote users] ──┘        ├── Secured Virtual Hub (Azure Firewall)
+                          ├── ExpressRoute Gateway
+                          ├── S2S VPN Gateway
+                          ├── P2S VPN Gateway
+                          └── Spoke VNet connections
+```
+
+## Component table
+
+| Component | SKU / tier | Rationale |
+|---|---|---|
+| Virtual WAN | Standard | Required for VPN + ER + any-to-any |
+| Virtual Hub | /24 minimum | Sized for scale units |
+| Secured Virtual Hub | Premium Firewall | TLS inspection + IDPS |
+| Hub-to-hub | Auto any-to-any | Managed by Microsoft |
+| ExpressRoute Gateway | Scale unit dependent | Zone-redundant by default |
+| Routing intent | Internet + Private | Simplifies UDR maintenance |
+
+## Data flow narrative
+
+- **Spoke ↔ Spoke (same hub)**: native via hub router
+- **Spoke ↔ Spoke (cross-region)**: native via hub-to-hub
+- **Internet egress**: with Routing Intent "Internet traffic" → Secured Hub Firewall → Internet
+- **Private traffic**: with Routing Intent "Private traffic" → Secured Hub Firewall → on-prem / spoke
+- **Branch ↔ Azure**: branch SD-WAN over VPN or ExpressRoute → hub → spoke
+
+## IaC starter
+- [Azure Landing Zone — VWAN topology (Bicep / Terraform)](https://github.com/Azure/Enterprise-Scale)
+- Microsoft Learn: [Virtual WAN architecture options](https://learn.microsoft.com/azure/virtual-wan/virtual-wan-about)
+
+## Known limitations
+
+- Some advanced UDR patterns require BGP custom routes
+- 3rd-party NVAs in the hub have specific integration requirements
+- Hub deployment time can be 30+ minutes
+
+## When to choose
+- &gt; 2 Azure regions
+- Large branch footprint with SD-WAN
+- Customer prefers Microsoft-managed transit
+- Multi-region secure egress via single Firewall policy
+
+## When NOT to choose
+- Single-region simple workloads (use hub-spoke)
+- Customer requires custom NVA chains that VWAN doesn't natively support
+- Cost-sensitive small footprint

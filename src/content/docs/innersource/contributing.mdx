@@ -1,0 +1,61 @@
+---
+title: "Contributing to the Networking Specialization Toolkit"
+description: How to propose changes, what to file, branch naming, review SLA, and code of conduct.
+sidebar:
+  label: "Contributing"
+  order: 1
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+## Why innersource
+
+This repository is the **shared playbook** for every consultant running an Azure Networking Services engagement at the firm. The audit checklist is published by Microsoft, but the *how-we-deliver-it* is owned by us — and improving it is everyone's job.
+
+## How to contribute
+
+1. **Have a lesson, gap, or template fix?** Open an issue — pick the right template:
+   - [Control Improvement](../../) — change to a control page's evidence guidance
+   - [Template Improvement](../../) — fix to a deliverable / reference architecture
+   - [Lesson Learned](../../) — capture an engagement insight
+2. **Have a fix ready?** Cut a branch and open a PR — see branch naming below
+3. **Have a new reference architecture?** PR a new MDX under `engagement/reference-architectures/` following the existing structure
+
+## Branch naming
+
+| Prefix | Use |
+|---|---|
+| `feat/` | New content or new template |
+| `fix/` | Correction to existing content |
+| `chore/` | Tooling, dependencies, CI |
+| `docs/` | Documentation-only changes |
+| `audit/` | Updates aligned to a specific audit version (e.g. `audit/v1-9-preview`) |
+
+Example: `feat/vwan-routing-intent-page`, `fix/b3-2-service-count-clarification`.
+
+## Pull request requirements
+
+- Use the [PR template](../../) — describe the engagement phase, the control(s) affected, and the rationale
+- Link the issue it closes
+- Tick the rendering check (run `npm run build` locally)
+- Wait for at least one reviewer from CODEOWNERS
+
+## Review SLA
+
+| Change class | First response | Decision |
+|---|---|---|
+| Critical (audit-breaking error) | 1 business day | 3 business days |
+| Standard content update | 3 business days | 5 business days |
+| Major new content (reference architecture, new template) | 1 week | 2 weeks |
+
+## Content governance
+
+All content follows the **Draft → Reviewed → Endorsed → Deprecated** lifecycle. See the [Content Governance page](../content-governance/) for definitions and transitions.
+
+## Code of conduct
+
+This repository follows the firm's standard code of conduct. Be specific, be kind, and assume good intent — the next consultant reading your contribution may be at midnight before a customer presentation.
+
+<Aside type="tip">
+  Not sure where a change belongs? Open the issue first and ask. The CODEOWNERS will help route it.
+</Aside>

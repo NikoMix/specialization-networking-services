@@ -1,0 +1,90 @@
+---
+title: "Discovery Workshop Kit"
+description: 3-day discovery workshop agenda, facilitator notes, and decision-log seed for an Azure networking engagement.
+sidebar:
+  label: "Discovery Workshop Kit"
+  order: 3
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+## When to use this
+Run after the qualification questionnaire is complete. The workshop produces the assessment artifact (B.1.1) and seeds the solution design (B.2.1).
+
+## Inputs you need from the customer
+
+| Input | Why |
+|---|---|
+| Completed [qualification questionnaire](../qualification-questionnaire/) | Pre-read |
+| Current-state topology diagram | Day 1 anchor |
+| Workload inventory (top 10 by criticality) | Sequencing |
+| Security architect, network architect, app lead | Required attendees |
+
+## Step-by-step
+
+### Day 1 — Current state + topology whiteboard
+
+<Steps>
+1. Recap of the qualification questionnaire (30 min)
+2. Customer presents current-state topology (60 min)
+3. Whiteboard walk: hub(s), spokes, ER / VPN, DNS authority, internet edge (90 min)
+4. Gap identification against [CAF network topology](https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/define-an-azure-network-topology) (60 min)
+5. Day 1 readout (30 min): top 5 risks, top 5 opportunities
+</Steps>
+
+### Day 2 — Target state options
+
+<Steps>
+1. Reference-architecture menu — [hub-spoke vs VWAN vs secure-edge vs multi-region](../reference-architectures/) (60 min)
+2. Working session: hub-spoke or VWAN? — decision criteria walk-through (90 min)
+3. Working session: Firewall Premium vs 3rd-party NVA — TLS inspection, IDPS (60 min)
+4. Working session: Front Door vs App Gateway only vs both (60 min)
+5. Decision log seeded — minimum 10 decisions captured with owner + date (30 min)
+</Steps>
+
+### Day 3 — Prioritisation + roadmap
+
+<Steps>
+1. Backlog generation: from gaps + decisions → epic-level workstreams (60 min)
+2. T-shirt sizing per workstream (60 min)
+3. Sequencing — quick wins, foundational, transformational (60 min)
+4. Roadmap on a page (90 min)
+5. Workshop close: signed-off roadmap, named owners, next-step gates (30 min)
+</Steps>
+
+## Facilitator notes
+
+- **Mandatory:** capture a **traffic-flow diagram** for at least three representative workloads. This becomes the design's validation reference.
+- Bring **2 facilitators** — one drives, one captures.
+- Use **Miro / Visio templates** for whiteboards (link your firm's templates here).
+- Keep a running **assumptions log** alongside the decision log — assumptions become design risks.
+
+<Aside type="tip">
+  If a decision can't be closed in the room, mark it as `Decision pending — owner + date` in the decision log. Do not let it block the design phase — every customer engagement has 2–3 open decisions at design start.
+</Aside>
+
+## Decision-log seed
+
+| # | Decision | Options considered | Decision | Owner | Date |
+|---|---|---|---|---|---|
+| 1 | Topology base | Hub-spoke, VWAN Standard, Secured Virtual Hub | | | |
+| 2 | Hybrid connectivity | ER Standard, ER Premium, ER Direct, VPN, dual | | | |
+| 3 | Edge ingress | Front Door, App Gateway, Front Door + App Gateway | | | |
+| 4 | Firewall tier | Azure Firewall Standard, Premium, NVA | | | |
+| 5 | DDoS tier | Network, IP, none | | | |
+| 6 | DNS authority | Azure DNS, Azure DNS Private Resolver, on-prem AD-DNS | | | |
+| 7 | Bastion model | Per-region Bastion Standard, central Bastion + ER | | | |
+| 8 | Observability core | NSG Flow Logs + Network Insights, Connection Monitor, 3rd-party | | | |
+| 9 | Segmentation primitive | NSG + ASG, Firewall policy, 3rd-party NVA | | | |
+| 10 | IaC tool | Bicep, Terraform, ARM, ALZ Accelerator | | | |
+
+## Output: customer-ready deliverable
+
+- Completed assessment artifact (feeds B.1.1)
+- Filled-in decision log
+- Signed-off roadmap on a page
+- Traffic-flow diagrams for 3 representative workloads
+
+## Reuse & contribute back
+
+Raise an issue if a workshop activity consistently runs short or long — the agenda lives here and should evolve with the practice.

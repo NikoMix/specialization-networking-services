@@ -1,0 +1,109 @@
+---
+title: Pre-Qualification Requirements
+description: Requirements your organisation must meet before applying for the Networking Services in Microsoft Azure Advanced Specialization audit.
+sidebar:
+  order: 2
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+<Aside type="caution">
+  All requirement categories below must be satisfied **before** requesting an audit from Partner Center. Review each section carefully and confirm readiness with your Microsoft Partner Development Manager (PDM).
+</Aside>
+
+## Requirement 1 – Active Solutions Partner Designation
+
+Your organisation must hold an active **Solutions Partner for Infrastructure (Azure)** designation.
+
+| Designation | How to verify |
+|---|---|
+| Solutions Partner for **Infrastructure (Azure)** | Partner Center → Overview → Membership |
+
+> ✅ **Evidence needed:** Screenshot of active designation from Partner Center, or the Partner Center PDF report showing designation status.
+
+---
+
+## Requirement 2 – Skilling Prerequisites
+
+The Networking Services specialization audit retains skilling prerequisites (the 3rd-party certification requirement formerly in Module B Control 1.1 was **removed in V1.6**, but skilling prerequisites in Partner Center remain in force).
+
+Recommended consultant-level certifications for the engagement team:
+
+| Certification | Role |
+|---|---|
+| **AZ-700** Designing and Implementing Microsoft Azure Networking Solutions | Primary networking-architect credential |
+| **AZ-104** Azure Administrator Associate | Operations / Day-2 |
+| **SC-100** Cybersecurity Architect Expert | Secure edge / Firewall Premium / segmentation scenarios |
+| **AZ-305** Azure Solutions Architect Expert | Cross-pillar architecture (supporting) |
+
+Confirm the current Partner Center skilling prerequisites for your organisation on the day of application — Microsoft updates them periodically.
+
+> ✅ **Evidence needed:** Microsoft Learn transcripts or certification verification links for each individual on the audit team.
+
+---
+
+## Requirement 3 – Customer Engagement Base (Module B)
+
+Unless stated otherwise on a specific control, you will need:
+
+| Need | Detail |
+|---|---|
+| **≥ 3 unique customers** | With networking-workload deployments completed in the **last 18 months** |
+| **Completed projects only** | Solution went live in production AND has documented customer sign-off |
+| **Native Azure networking services** | At least **5** of: VNet+Peering, ExpressRoute, VPN, Virtual WAN, CDN, Front Door, Load Balancer, Private Link, Traffic Manager, Application Gateway, Azure Firewall |
+| **Workload scenarios covered** | At least one (1) of: secure network infrastructure, on-prem & branch connectivity, remote work at scale, secure global app delivery, 5G & edge computing |
+
+> ✅ **Evidence needed:** Signed SOWs, solution design docs, architecture diagrams, HLDs / LLDs, as-built docs, project plans (any 2+ per control as specified).
+
+---
+
+## Requirement 4 – Customer Engagement Base (Module A)
+
+For Module A controls you will need evidence from **two (2) unique customer projects** completed within the **last 12 months** demonstrating:
+
+- A defined Cloud & AI Adoption Business Strategy supported by the **FinOps Review** (required) plus one other assessment (CASE recommended)
+- A Cloud & AI Adoption Plan with cost-management report (pricing-calculator output) **and** DevOps capability assessment per customer
+- A Security & Governance baseline using **Microsoft Defender for Cloud** (or 3rd-party) plus a **Cloud Adoption Security Review**
+- A **Well-Architected Review** per workload (Go-Live or Standard) before deployment
+- A repeatable **Azure Landing Zone** deployment via Bicep, Terraform, or ARM (ALZ Accelerator accepted), evidenced by an **ALZ Review** assessment
+- A documented skilling plan
+- Operations Management Tooling — Azure Monitor / Automation / Backup-Site-Recovery — plus one CI/CD security-evidence artifact (security scan, monitoring-dashboard export, audit-ready YAML pipeline, SBOM, or policy-as-code snapshot)
+
+> ✅ **Module A reuse:** A previous Module A Pass from another Azure specialization audit (V2.0+) within the last 2 years waives Module A here. Expert MSP V1.9+ also satisfies Module A.
+
+---
+
+## Requirement 5 – Third-Party Remote Audit
+
+Your organisation must **pass an ISSI-administered remote audit**.
+
+<Steps>
+1. Confirm pre-qualification in Partner Center
+2. Submit application via Partner Center → **Azure** under the **Specialization** section
+3. Microsoft validates eligibility and confirms to ISSI
+4. ISSI schedules the audit within 2 business days; audit must be conducted within 30 calendar days
+5. Provide live demonstrations, source documents, and SME personnel during the audit (4 hours for Module B, 8 hours for A+B)
+6. Address any Open Action Items in the Gap Review Meeting (within 15 calendar days of receiving the Gap Report)
+7. Receive Final Report within 5 business days; Microsoft updates Partner Center within 2 business days
+</Steps>
+
+> ✅ **Evidence needed:** This entire repository constitutes your evidence preparation package. Use [Module A](../module-a/1-1-cloud-ai-adoption-business-strategy/) and [Module B](../module-b/1-1-cloud-networking-requirements-assessment/) for control-level evidence.
+
+---
+
+## Quick Readiness Checklist
+
+| # | Requirement | Status |
+|---|---|---|
+| 1 | Active Solutions Partner for Infrastructure (Azure) designation | ⬜ |
+| 2 | AZ-700 holders on the engagement team | ⬜ |
+| 2 | AZ-104 / SC-100 / AZ-305 coverage on the engagement team | ⬜ |
+| 3 | ≥ 3 unique networking customers with completed projects in last 18 months | ⬜ |
+| 3 | ≥ 5 native Azure networking services demonstrably implemented | ⬜ |
+| 3 | At least one of the five workload scenarios covered | ⬜ |
+| 4 | ≥ 2 unique customer projects for Module A (last 12 months) | ⬜ |
+| 4 | FinOps Review completed for 2 customers | ⬜ |
+| 4 | Cloud Adoption Security Review completed for 2 customers | ⬜ |
+| 4 | Well-Architected Review completed for 2 customers | ⬜ |
+| 4 | ALZ Review completed; IaC (Bicep / Terraform / ARM) demonstrated | ⬜ |
+| 5 | Audit requested via Partner Center, ISSI engagement confirmed | ⬜ |

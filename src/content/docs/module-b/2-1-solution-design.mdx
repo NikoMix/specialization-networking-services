@@ -1,0 +1,92 @@
+---
+title: "B.2.1 – Solution Design"
+description: Evidence requirements for control B.2.1 — solution designs addressing customer requirements, meeting one of five workload scenarios, with full ALZ design-area coverage.
+sidebar:
+  label: "2.1 Solution Design"
+  order: 2
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+## What the Auditor Checks
+
+The auditor verifies your **solution designs show a consistent approach** to addressing the requirements captured in B.1.1. Completed projects must meet at least one (1) of the five scenarios and address every design point below.
+
+### Required scenarios (cover at least one)
+
+1. **Secure network infrastructure** — build, protect, monitor customer networks
+2. **On-prem and branch connectivity** — connect data centres / branches to Azure
+3. **Remote work at scale** — remote-user access to private + public cloud resources
+4. **Secure global app delivery** — build, secure, deliver apps to a global user base
+5. **5G and edge computing** — edge platforms and apps
+
+### Required design-point coverage (every item)
+
+- Adherence to initially assessed customer requirements
+- Alignment with CAF Network Topology and Connectivity architectures — hub-and-spoke transit, full / partial mesh, high-speed low-latency private connectivity, SD-WAN
+- Adherence to HA and reliability requirements for connectivity
+- High-level network implementation plan with estimated time-to-finish
+- Approach to validation that cloud-connectivity requirements were met
+- ALZ design areas addressed (or deviations documented):
+  - Hub-and-spoke architecture (or retrofit) for performance + security
+  - Resource and perimeter security — Bastion, NSGs, Azure Firewall or 3rd-party NVAs, routing appliances
+  - Relevant security products to secure data access
+  - Governance tooling for cost optimisation (budgets + alerts at multiple scopes)
+  - Network monitoring (e.g., **Azure Monitor Network Insights**) integrated into existing tooling
+  - Use of network topology visualisation tooling
+
+**Typical questions:**
+- Which of the five scenarios does this design address?
+- Where in the design is the validation approach?
+- Show me how the design aligns to CAF network topology guidance.
+
+---
+
+## Required Evidence Checklist
+
+| # | Evidence Item | Accepted Formats | Status |
+|---|---|---|---|
+| 1 | Solution Design document — Customer A | PDF, Visio, Word | ⬜ |
+| 2 | Solution Design document — Customer B | PDF, Visio, Word | ⬜ |
+| 3 | Solution Design document — Customer C | PDF, Visio, Word | ⬜ |
+| 4 | CAF alignment notes per design | PDF, Word | ⬜ |
+| 5 | HA / reliability narrative per design | PDF, Word | ⬜ |
+| 6 | Validation approach per design | PDF, Word | ⬜ |
+
+> Three (3) unique customer network-connectivity projects, completed within the last **18 months**.
+
+<Aside type="tip">
+  Use the [HLD template](../../engagement/deliverables/hld-template/) and the [Reference Architectures](../../engagement/reference-architectures/) catalogue as starting points so every design lands compliant on day one.
+</Aside>
+
+---
+
+## Evidence Guidance
+
+### Solution Design document
+Accepted: networking design docs, functional specs, architectural diagrams, automated tooling reports, physical / logical diagrams, assessment-tool outputs, network-design assessment checklists, 3rd-party tooling reports, signed SOWs, templates, discovery-workshop outcomes documentation.
+
+### Design-area coverage
+Walk through each ALZ design area in the document. Where a requirement is not relevant, **document the customer's decision to deviate** — silence reads as a gap.
+
+### Monitoring
+Show Azure Monitor Network Insights (or equivalent) in the design, integrated with the customer's existing tooling.
+
+---
+
+## Evidence Status
+
+| Item | Owner | Status | Last Updated | Notes |
+|---|---|---|---|---|
+| Solution Design – Customer A | | ⬜ Not started | | |
+| Solution Design – Customer B | | ⬜ Not started | | |
+| Solution Design – Customer C | | ⬜ Not started | | |
+
+---
+
+## Common Gaps
+
+- **No explicit scenario mapping:** State which of the five scenarios this design addresses, in the executive summary.
+- **ALZ design areas implicit:** Add a section listing each ALZ design area with either the design decision or the documented deviation rationale.
+- **No validation approach:** A 1-page "how we'll know it works" section closes this gap.
+- **Diagram-only deliverable:** A diagram is not a design — pair with narrative covering all design points.

@@ -1,0 +1,73 @@
+---
+title: "HLD Template"
+description: High-Level Design template for an Azure networking engagement.
+sidebar:
+  label: "HLD Template"
+  order: 1
+---
+
+## How to use
+Clone this into the customer's document repository (rename `customer-hld.md`). Fill every section. Leave none blank — use *N/A — rationale* when a section doesn't apply.
+
+---
+
+# \{Customer} — Azure Networking High-Level Design
+
+**Document owner:** \{Author} · **Version:** 0.1 · **Date:** \{YYYY-MM-DD} · **Status:** Draft
+
+## 1. Executive summary
+One paragraph. Outcome, scope, timeline, key decisions.
+
+## 2. Context and constraints
+- Business drivers
+- Compliance / sovereignty
+- Existing connectivity baseline
+- Decision-log reference
+
+## 3. Target topology
+- Reference architecture cited: *(e.g. [Virtual WAN — Secured Virtual Hub](../../reference-architectures/vwan-secured-hub/))*
+- Topology diagram *(insert)*
+- Regions and paired regions
+- Hub / VWAN hub layout
+- Address-plan summary (detailed plan in LLD)
+
+## 4. Security zones
+- Segmentation strategy (NSG / ASG / Firewall policy)
+- Edge protection (DDoS tier, WAF stack)
+- Identity / RBAC boundary
+
+## 5. Ingress / egress patterns
+- Internet ingress: AFD → AppGW → backend
+- Internet egress: spoke → Firewall → internet
+- East-west: forced via Firewall
+- Hybrid: ER primary, VPN backup, Global Reach
+
+## 6. DR / resilience posture
+- RTO / RPO targets
+- Failover mechanism per workload class
+- BGP convergence expectations
+- SLA stacking
+
+## 7. Observability
+- NSG Flow Logs + Traffic Analytics
+- Connection Monitor
+- Network Insights
+- SIEM integration
+
+## 8. Operating model
+- Who owns what (RACI)
+- Change-control windows
+- Day-2 runbook reference
+
+## 9. Decision log
+*(Copy from discovery workshop decision log — keep updated.)*
+
+| # | Decision | Options considered | Decision | Owner | Date |
+|---|---|---|---|---|---|
+
+## 10. Open questions / risks
+| # | Question / risk | Owner | Resolution date |
+|---|---|---|---|
+
+## 11. Appendix — CAF / ALZ alignment matrix
+*(How each ALZ design area is addressed or deviation rationale.)*

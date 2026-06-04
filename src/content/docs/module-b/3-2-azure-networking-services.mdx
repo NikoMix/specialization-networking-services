@@ -1,0 +1,75 @@
+---
+title: "B.3.2 – Azure Networking Services"
+description: Evidence requirements for control B.3.2 — implementation of at least five native Azure networking services across customer connectivity projects.
+sidebar:
+  label: "3.2 Azure Networking Services"
+  order: 5
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+## What the Auditor Checks
+
+The auditor verifies you have implemented **at least five (5) native Azure networking services** from the list below across one or more customer connectivity projects within the last **18 months**.
+
+### Eligible services (need ≥ 5)
+
+- Virtual Network and VNet Peering
+- ExpressRoute
+- VPN
+- Virtual WAN
+- CDN
+- Front Door
+- Load Balancer
+- Private Link
+- Traffic Manager
+- Application Gateway
+- Azure Firewall
+
+**Typical questions:**
+- Which five services have you implemented in the last 18 months?
+- Show me the design and as-built / SOW for each.
+- Which customer used which service?
+
+---
+
+## Required Evidence Checklist
+
+| # | Evidence Item | Accepted Formats | Status |
+|---|---|---|---|
+| 1 | Service-to-customer matrix (5 services covered) | Excel, PDF | ⬜ |
+| 2 | **At least two (2)** of: signed SOWs, solution design docs, project plan + deployment sequence, architecture diagrams, HLDs + LLDs, as-built documentation | PDF, Word, Visio | ⬜ |
+
+> One or more customer connectivity projects, last **18 months**.
+
+<Aside type="tip">
+  Use the [Evidence Tracker](../../evidence-tracker/) service-coverage table to plan which 5+ services you will demonstrate — pick services that span multiple customers to also satisfy B.1.1 and B.2.1.
+</Aside>
+
+---
+
+## Evidence Guidance
+
+### Service-to-customer matrix
+A single sheet mapping each implemented service to: customer (anonymised), engagement date, and the document(s) where it appears.
+
+### Document evidence
+Same accepted document types as B.3.1. Architecture diagrams should label each service explicitly so the auditor can count them at a glance.
+
+---
+
+## Evidence Status
+
+| Item | Owner | Status | Last Updated | Notes |
+|---|---|---|---|---|
+| Service matrix | | ⬜ Not started | | |
+| Doc type 1 | | ⬜ Not started | | |
+| Doc type 2 | | ⬜ Not started | | |
+
+---
+
+## Common Gaps
+
+- **Counting closely-related services as one:** ExpressRoute and VPN are separate services; same with App Gateway and Front Door. Count them separately.
+- **Diagrams without service labels:** Auditor can't verify what they can't see — label every component with its Azure service name.
+- **Older engagements:** &gt; 18 months disqualifies — refresh with a current engagement.

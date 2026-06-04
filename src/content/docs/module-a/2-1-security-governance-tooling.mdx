@@ -1,0 +1,64 @@
+---
+title: "A.2.1 – Security & Governance Tooling"
+description: Evidence requirements for control A.2.1 — established security baseline using Microsoft Defender for Cloud (or 3rd party) plus a Cloud Adoption Security Review.
+sidebar:
+  label: "2.1 Security & Governance Tooling"
+  order: 3
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+## What the Auditor Checks
+
+The auditor verifies you can **deploy the required governance tools for compliance and security** for two (2) unique customer projects, including an established security baseline (Microsoft Defender for Cloud or 3rd party) and a completed **Cloud Adoption Security Review** assessment.
+
+**Typical questions:**
+- Show me the Defender for Cloud Secure Score baseline for each customer.
+- Show me the completed Cloud Adoption Security Review for each customer.
+- How do you enforce the baseline going forward?
+
+---
+
+## Required Evidence Checklist
+
+| # | Evidence Item | Accepted Formats | Status |
+|---|---|---|---|
+| 1 | **Microsoft Defender for Cloud baseline** (Secure Score export) — Customer A | PDF, screenshot | ⬜ |
+| 2 | **Microsoft Defender for Cloud baseline** (Secure Score export) — Customer B | PDF, screenshot | ⬜ |
+| 3 | **Cloud Adoption Security Review** assessment output — Customer A | PDF | ⬜ |
+| 4 | **Cloud Adoption Security Review** assessment output — Customer B | PDF | ⬜ |
+
+> Projects must have completed in the past **12 months**. Equivalent 3rd-party tooling is acceptable in lieu of Defender for Cloud if it provides a comparable baseline.
+
+<Aside type="tip">
+  See the [governance tools templates](https://learn.microsoft.com/azure/cloud-adoption-framework/govern/) for the security baseline templates the auditor expects to see referenced.
+</Aside>
+
+---
+
+## Evidence Guidance
+
+### Defender for Cloud baseline
+Enable Defender for Cloud on the customer subscription, capture the initial Secure Score, define the baseline targets, and export the recommendations workbook.
+
+### Cloud Adoption Security Review
+Run the [Cloud Adoption Security Review](https://learn.microsoft.com/assessments/) — export the customer-specific report and your action plan.
+
+---
+
+## Evidence Status
+
+| Item | Owner | Status | Last Updated | Notes |
+|---|---|---|---|---|
+| Defender baseline – Customer A | | ⬜ Not started | | |
+| Defender baseline – Customer B | | ⬜ Not started | | |
+| Security Review – Customer A | | ⬜ Not started | | |
+| Security Review – Customer B | | ⬜ Not started | | |
+
+---
+
+## Common Gaps
+
+- **Baseline captured but no follow-through:** Show the remediation actions and the score improvement over time.
+- **Security Review not exported per customer:** Generic exports do not qualify — must be customer-specific.
+- **Only 3rd-party tooling, no link to Azure controls:** Map the 3rd-party findings back to specific Azure-native controls (Policy, NSGs, Defender plans).

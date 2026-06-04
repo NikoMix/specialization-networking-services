@@ -1,0 +1,69 @@
+---
+title: "Landing-zone connectivity"
+description: Alignment of the network topology with the Azure Landing Zone / CAF connectivity subscription model.
+sidebar:
+  label: "Landing-zone connectivity"
+  order: 7
+---
+
+## Context
+Use when the customer is **deploying or aligning to Azure Landing Zones (ALZ)**. The connectivity subscription is the centralised home for hub VNet / VWAN, gateways, Firewall, Bastion, and DNS Private Resolver.
+
+## Diagram
+
+```
+[Management group: Platform]
+    │
+    ├── Subscription: Identity
+    ├── Subscription: Management
+    └── Subscription: Connectivity  ◄── network topology lives here
+            ├── Hub VNet / VWAN Hub
+            ├── ExpressRoute Gateway
+            ├── VPN Gateway
+            ├── Azure Firewall (or Secured Virtual Hub)
+            ├── Azure Bastion
+            ├── DNS Private Resolver
+            └── Private DNS zones (all privatelink.* zones)
+
+[Management group: Landing Zones]
+    ├── Subscription: Corp (peered/connected to hub, no internet)
+    └── Subscription: Online (peered/connected to hub, public-facing allowed)
+```
+
+## Component table
+
+| Component | Lives in | Notes |
+|---|---|---|
+| Hub VNet or VWAN Hub | Connectivity sub | Single source of transit |
+| Gateways (ER / VPN) | Connectivity sub | One per hub |
+| Azure Firewall | Connectivity sub | Either standalone or Secured Hub |
+| Private DNS zones | Connectivity sub | Centralised via ALZ policy |
+| DNS Private Resolver | Connectivity sub | Hybrid resolution bridge |
+| Bastion | Connectivity sub | Shared per region |
+| Landing zone VNets | Each LZ sub | Peered to hub / connected to VWAN |
+
+## Data flow narrative
+
+- ALZ policy automatically deploys Private DNS zones and links them to LZ subs
+- LZ workloads peer to hub (hub-spoke) or connect to VWAN hub (VWAN model)
+- All UDRs / route tables managed centrally in the connectivity sub
+- Firewall policy hierarchy: base policy → child policies per LZ category
+
+## IaC starter
+- [ALZ Bicep](https://github.com/Azure/ALZ-Bicep)
+- [ALZ Terraform](https://github.com/Azure/terraform-azurerm-avm-ptn-alz)
+- [ALZ Portal Accelerator](https://github.com/Azure/Enterprise-Scale)
+
+## Known limitations
+
+- Initial ALZ deployment time is hours, not minutes
+- Brownfield retrofit needs careful policy assignment to avoid breaking existing workloads
+- Multiple geographies multiplies the number of hubs + zones
+
+## When to choose
+- Always — even brownfield engagements should target ALZ alignment over time
+- Customer pursuing CAF Ready phase formally
+
+## When NOT to choose
+- Throwaway dev / lab environments
+- Single-subscription PoCs with no governance need

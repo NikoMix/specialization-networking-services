@@ -1,0 +1,39 @@
+name: Control Improvement
+description: Suggest a clarification or correction to a Module A or Module B audit control page
+title: "[control] <A.x.x or B.x.x> – <short description>"
+labels: ["innersource"]
+body:
+  - type: dropdown
+    id: module
+    attributes:
+      label: Module
+      options:
+        - "Module A – Cloud Foundation"
+        - "Module B – Networking Services"
+    validations:
+      required: true
+  - type: input
+    id: control-id
+    attributes:
+      label: Control ID
+      description: e.g. A.2.2, B.3.2
+      placeholder: B.3.2
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What's wrong or unclear today?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed wording / evidence change
+    validations:
+      required: true
+  - type: textarea
+    id: source
+    attributes:
+      label: Source / audit-checklist version
+      description: Cite the V1.8.1 (or V1.9 PREVIEW) checklist section that drove this change.

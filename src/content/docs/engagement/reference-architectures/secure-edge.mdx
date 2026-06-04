@@ -1,0 +1,61 @@
+---
+title: "Secure edge / internet ingress"
+description: Front Door (WAF) → Application Gateway → backend. Layered L7 entry with global + regional WAF.
+sidebar:
+  label: "Secure edge"
+  order: 3
+---
+
+## Context
+Use when the customer is publishing **HTTP(S) workloads to the internet** and wants WAF, DDoS, geo-routing, and caching. Layering Front Door + App Gateway gives global edge + regional control.
+
+## Diagram
+
+```
+[Internet] → [Azure Front Door Premium]  (WAF, caching, DDoS)
+                    │
+                    ▼ Private Link
+        [Application Gateway v2 + WAF v2]  (per region)
+                    │
+                    ▼
+              [Backend: AKS / App Service / VM scale set / Private Endpoint]
+```
+
+## Component table
+
+| Component | SKU / tier | Rationale |
+|---|---|---|
+| Azure Front Door | Premium | Required for Private Link to origins, managed WAF, bot protection |
+| WAF policy (AFD) | Managed rule set v2 | DRS 2.x + bot manager |
+| Application Gateway | WAF v2 | Per-region routing, header rewrite, mTLS |
+| WAF policy (AppGW) | OWASP 3.2 | Regional defence-in-depth |
+| DDoS Protection | Network or IP tier | IP tier acceptable for AppGW PIPs only |
+| Private Link to origin | Yes | Removes public exposure of AppGW |
+
+## Data flow narrative
+
+- User → AFD POP nearest user → WAF inspect + cache check
+- AFD POP → Private Link → AppGW (private IP only)
+- AppGW → routes to backend pool (Private Endpoint, VMSS, AKS Ingress)
+- All TLS terminated at AFD; re-encrypted to AppGW; optionally re-encrypted to backend
+
+## IaC starter
+- [Front Door + App Gateway reference](https://learn.microsoft.com/azure/architecture/example-scenario/gateway/firewall-application-gateway)
+- Bicep modules: `Microsoft.Cdn/profiles`, `Microsoft.Network/applicationGateways`
+
+## Known limitations
+
+- AFD Private Link to AppGW requires AppGW v2 + correct region pair
+- AFD does not support all HTTP verbs/headers in cache
+- Cost: AFD Premium + AppGW WAF v2 is the upper tier — model in pricing
+
+## When to choose
+- Global user base
+- Public HTTP(S) only
+- WAF + caching + bot protection required
+- Multi-region with geo-routing
+
+## When NOT to choose
+- Non-HTTP protocols (use Cross-region Load Balancer)
+- Internal-only ingress (use AppGW alone or Private Endpoints)
+- Latency-critical sub-region pinned traffic

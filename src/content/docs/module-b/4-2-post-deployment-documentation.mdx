@@ -1,0 +1,67 @@
+---
+title: "B.4.2 – Post-deployment Documentation"
+description: Evidence requirements for control B.4.2 — post-deployment operational documentation including as-built, decisions, and SOPs.
+sidebar:
+  label: "4.2 Post-deployment Documentation"
+  order: 7
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+## What the Auditor Checks
+
+The auditor verifies you provide **post-deployment operational documentation** showing customers successfully using the new service on Azure:
+
+- Demonstrate how documents, decisions, architectural designs, and procedures were implemented, highlighting any differences from initial design decisions
+- Demonstrate **standard operating procedures** for the business-as-usual operations team that describe "how-to" scenarios
+
+**Typical questions:**
+- Show me the as-built documentation for this customer.
+- Where are the design decisions and deltas from the original HLD captured?
+- Walk me through three operational "how-to" SOPs.
+
+---
+
+## Required Evidence Checklist
+
+| # | Evidence Item | Accepted Formats | Status |
+|---|---|---|---|
+| 1 | **As-built documentation** for the customer | PDF, Word, Visio | ⬜ |
+| 2 | Decision log capturing deltas vs the original HLD | PDF, Word, Excel | ⬜ |
+| 3 | Standard operating procedures ("how-to" scenarios) | PDF, Word | ⬜ |
+| 4 | *(Alternative if partner is managing the service)* operations **runbooks** | PDF, Word | ⬜ |
+
+> One (1) customer, completed in the last **18 months**. If the partner is managing the service on the customer's behalf, **operation runbooks** are acceptable as alternative evidence to the above.
+
+<Aside type="tip">
+  Use the [Runbook template](../../engagement/deliverables/runbook-template/), [LLD template](../../engagement/deliverables/lld-template/), and [Hypercare plan template](../../engagement/deliverables/hypercare-plan-template/) — together they cover this control's evidence set.
+</Aside>
+
+---
+
+## Evidence Guidance
+
+### As-built
+Generate from the final deployed state (Azure portal exports, IaC parameter files, network topology export). Cross-reference the design decision log.
+
+### SOPs
+Cover at minimum: failover (ER ↔ VPN), firewall rule change, certificate rotation (App Gateway / Front Door), DDoS incident response, NSG flow log triage, Connection Monitor alert response.
+
+---
+
+## Evidence Status
+
+| Item | Owner | Status | Last Updated | Notes |
+|---|---|---|---|---|
+| As-built | | ⬜ Not started | | |
+| Decision log | | ⬜ Not started | | |
+| SOPs | | ⬜ Not started | | |
+| Runbooks (if managed) | | ⬜ Not started | | |
+
+---
+
+## Common Gaps
+
+- **As-built identical to the HLD:** As-built should capture **deltas** that emerged during deployment — drift from the design is normal and must be captured.
+- **No operational SOPs:** A design doc is not an operational doc — write the BAU "how-to" procedures.
+- **Customer engagement &gt; 18 months old:** Pick a fresher engagement.

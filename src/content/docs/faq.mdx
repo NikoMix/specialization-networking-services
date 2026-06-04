@@ -1,0 +1,97 @@
+---
+title: Frequently Asked Questions
+description: Common questions from partners during the Networking Services in Microsoft Azure Advanced Specialization engagement.
+sidebar:
+  order: 11
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+## Pre-Qualification
+
+### Which Solutions Partner designation do we need?
+**Solutions Partner for Infrastructure (Azure)** must be active in Partner Center. Other designations (Data & AI, Digital & App Innovation, Modern Work, Security) do not by themselves qualify.
+
+### Were 3rd-party certifications removed?
+Yes. Module B Control 1.1 — the 3rd-party certifications requirement — was **removed in V1.6 (Dec 2024)**. Skilling prerequisites surfaced in Partner Center remain in force, however. Always check Partner Center on the day you apply.
+
+### What about the 5 native Azure networking services — does it have to be 5 different customers?
+No. The control requires at least 5 services to be demonstrated across **one or more** customer projects within the last 18 months. You can show three customers covering 5+ services collectively.
+
+---
+
+## Audit Process
+
+### Who conducts the audit?
+**Information Security Systems International, LLC (ISSI)** — independent third-party audit firm contracted by Microsoft.
+
+### How long is the audit itself?
+- **Module B** alone: 4 hours
+- **Module A + B** combined: 8 hours
+
+### How long is a Pass valid?
+**Two (2) years.** Module A also satisfies subsequent Azure specialization audits if you remain within the 2-year window (V2.0+ checklist).
+
+### What happens if we fail?
+You move into the **Gap Review** phase. ISSI sends a Gap Report within 2 business days; you acknowledge within 2 business days; you complete a Gap Review Meeting (≤ 1 hour) within 15 calendar days, presenting evidence for the Open Action Items. If still not satisfied at the meeting, you get a No Pass and must reapply.
+
+### What format does ISSI want evidence in?
+Source documents and live demonstrations. **PowerPoints are accepted for the high-level overview only** — the auditor will then ask to see the source file, repo, pipeline, signed PDF, Microsoft Learn transcript, or live Azure portal view. Expect probing questions.
+
+### Can we anonymise customer names?
+Yes for internal docs (Customer A / B / C). The auditor may verify against Partner Center data and signed SOWs — work with your PDM to align.
+
+### Is the audit in English?
+Default: English. Some ISSI auditors offer interviews in other languages — ask during scheduling.
+
+---
+
+## Module A specifics
+
+### Can a Module A Pass from another Azure specialization be reused?
+Yes. A previous audit Pass result on V2.0 or later within the last 2 years (or Expert MSP V1.9+) satisfies Module A.
+
+### Does A.3.1 require all three IaC tools?
+**No.** As of the Dec 1 2025 refresh, the partner may use **Bicep, Terraform, OR ARM** (any one) — not all three. The **Azure Landing Zone Accelerator** (including Bicep, Terraform, or Azure-portal options) is accepted.
+
+### What can we use for the A.3.3 CI/CD security artifact?
+Any **one** of: a security scan report (static analysis or secret scanning), a monitoring dashboard export (Azure Monitor or Log Analytics), an audit-ready YAML pipeline file with integrated security tasks + code-scanning logs (CodeQL or push protection), a Software Bill of Materials (SBOM), or a policy-as-code compliance snapshot (Azure Policy results). All must be PII-free, IP-free, timestamped, and traceable to specific pipeline runs.
+
+---
+
+## Module B specifics
+
+### How many networking services must we demonstrate?
+**At least 5** from: VNet+Peering, ExpressRoute, VPN, Virtual WAN, CDN, Front Door, Load Balancer, Private Link, Traffic Manager, Application Gateway, Azure Firewall. (Control B.3.2.)
+
+### Which scenarios qualify for B.2.1 / B.3.1?
+Any one of: secure network infrastructure, on-prem & branch connectivity, remote work at scale, secure global app delivery, 5G & edge computing.
+
+### Does a PoC or pilot count as a completed project?
+**No** — unless explicitly permitted by this checklist and supported by documented completion + customer sign-off. Production go-live is the bar.
+
+### What about Cloud Migration Factory engagements?
+Yes — added in V1.6 (June 2025). They qualify as evidence as long as they demonstrate the controls.
+
+### What's required for the Well-Architected Review under B.2.2?
+**Exported results** from the Microsoft Well-Architected Review (Networking workload picker), covering **2 pillars per customer**, for at least **1 Networking workload** within the last 12 months. Reviews may be conducted before, during, or after deployment.
+
+### What must we show for B.4.1 sign-off?
+Documentation of testing, validation, and performance evaluations for 1 customer (within the last 18 months) that meets customer expectations **and includes a customer sign-off**. Verbal sign-off is insufficient.
+
+### What if we operate the customer's network ourselves?
+For B.4.2 (Post-deployment Documentation), if you are managing the service on the customer's behalf, your **operation runbooks** are acceptable as alternative evidence.
+
+---
+
+## Post-Specialization
+
+### How long is the specialization valid?
+**Two (2) years** after a Pass. The audit-checklist version active on the day of your audit is what you are audited against, not the version on the day you apply.
+
+### Where does the badge appear?
+On your **Microsoft AppSource partner profile**, in **Microsoft Partner Finder**, and downloadable from Partner Center for marketing use.
+
+<Aside>
+  Benefits and programmes change. Confirm current benefits with your PDM or on the [Microsoft Partner Network benefits page](https://partner.microsoft.com/en-us/partnership/partner-network/benefits).
+</Aside>

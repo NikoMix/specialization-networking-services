@@ -1,0 +1,58 @@
+---
+title: "Roadmap & Backlog"
+description: Upcoming content, planned reference architectures, and known gaps in the innersource toolkit.
+sidebar:
+  label: "Roadmap"
+  order: 3
+---
+
+## How to read this page
+
+This roadmap lists **what's planned next** in the toolkit. Items move from `Backlog → In progress → Shipped` via GitHub Issues. Anyone in the practice can propose additions via a Control Improvement or Template Improvement issue.
+
+## In progress
+
+| Item | Owner | Target |
+|---|---|---|
+| V1.9 PREVIEW delta analysis | CODEOWNERS | Q1 2026 |
+| Reference architecture diagrams (SVG) | Practice lead | Q1 2026 |
+| `create-issues.sh` runbook validation | Platform | Q1 2026 |
+
+## Backlog (prioritised)
+
+### High priority
+- [ ] Per-architecture Bicep starter repo links (currently text-only)
+- [ ] Customer-sign-off template (PDF + DocuSign template)
+- [ ] Bastion-only secure admin reference architecture
+- [ ] AVS / AVD adjacency reference architecture page
+- [ ] Sovereign cloud (Azure Sovereign Sky) callouts in each architecture page
+
+### Medium priority
+- [ ] Azure Route Server scenarios + BGP examples
+- [ ] FortiGate / Palo Alto VM-Series NVA insertion pattern
+- [ ] ExpressRoute Direct sizing calculator
+- [ ] DDoS Network vs IP tier decision tree
+- [ ] Multi-tenant SaaS networking pattern
+
+### Low priority
+- [ ] Visio stencil pack
+- [ ] Customer onboarding video walkthrough
+- [ ] Translation of the offering one-pager to additional languages
+
+## Known gaps (open issues)
+
+Track via the [issues page](../../) filtered by label `audit-evidence` and `template`.
+
+## Audit-version watchlist
+
+| Version | Notes |
+|---|---|
+| V1.8.1 (active Jan–Jun 2026) | Module B Control 1.1 removed (3rd-party certs); skilling prerequisites retained |
+| V1.9 (PREVIEW) | Under partner review — delta analysis to be added once finalised |
+
+## How items get added
+
+1. Open a Control Improvement or Template Improvement issue
+2. Add the `roadmap` label
+3. CODEOWNERS triage weekly; accepted items move into this page in the next PR
+4. Each item ships as a PR linking back to the issue

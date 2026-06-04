@@ -1,0 +1,76 @@
+---
+title: "Well-Architected Framework Assessment"
+description: WAF assessment guidance focused on the three networking-critical pillars — Reliability, Security, and Performance Efficiency.
+sidebar:
+  label: "WAF Assessment"
+  order: 4
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+## When to use this
+Run during the design phase (and re-run before each major deployment). Output satisfies both **A.2.2 Well-Architected Workloads** and **B.2.2 Azure Well-Architected Review**.
+
+## Inputs you need from the customer
+
+| Input | Why |
+|---|---|
+| Completed solution design (draft) | Pillars are scored against the design |
+| SME availability (network + security + app owner) | 90-min facilitated session |
+| Customer-named WAR workload | Required for the export |
+
+## Step-by-step
+
+1. Open the [Microsoft Well-Architected Review](https://learn.microsoft.com/assessments/azure-architecture-review/) — pick **Networking** workload type
+2. Pick the **two pillars per customer** that matter most (see "Pillar prioritisation" below)
+3. Run the assessment in a 90-min facilitated session
+4. Export the result as customer-named PDF
+5. Translate the recommendations into a 1-page action plan attached to the customer's design
+
+## Pillar prioritisation for networking engagements
+
+### Reliability (almost always pillar #1)
+
+- Multi-region design vs paired-region failover
+- ExpressRoute + VPN failover topology (active-active vs active-passive)
+- BGP convergence expectations
+- SLA stacking (ER SLA × Firewall SLA × DNS SLA)
+- Front Door / Traffic Manager health probes and failover behaviour
+- Connection-draining / session-affinity considerations
+
+### Security (almost always pillar #2)
+
+- Zero-Trust network alignment
+- Segmentation depth (NSG / ASG / Firewall policy / Private Link)
+- Firewall Premium TLS inspection + IDPS
+- DDoS tier selection (Network vs IP)
+- Private Endpoint coverage on PaaS
+- DNS exfiltration controls (DNS Private Resolver, FQDN filtering)
+- Bastion / Just-in-Time access posture
+
+### Performance Efficiency (frequent pillar #3 — pick if latency is a stated goal)
+
+- ExpressRoute circuit sizing + FastPath
+- Front Door caching and POP coverage
+- Application Gateway autoscale
+- Latency budgets (region → user, region → on-prem, region → region)
+- Geo-routing strategy (Front Door / Traffic Manager / Cross-region Load Balancer)
+
+### Cross-cuts (capture as secondary findings)
+
+- **Cost Optimization** — ER bandwidth right-sizing, Firewall consolidation, Bastion shared across hubs
+- **Operational Excellence** — runbook maturity, change-control discipline, observability coverage
+
+<Aside type="tip">
+  For **B.2.2** you only need 2 pillars per customer. For **A.2.2** you need a WAR completed before deployment for 2 customers. The same WAR exports can satisfy both controls if scheduled correctly.
+</Aside>
+
+## Output: customer-ready deliverable
+
+- WAR export PDF (customer-named, 2 pillars)
+- 1-page action plan capturing the top 5 findings + owner + target date
+- Updated risk register entries in the customer's design
+
+## Reuse & contribute back
+
+If you found a recurring WAR finding pattern (e.g., DNS exfiltration controls always missing), capture it as a **Lesson Learned** issue so the next engagement designs it in from day one.

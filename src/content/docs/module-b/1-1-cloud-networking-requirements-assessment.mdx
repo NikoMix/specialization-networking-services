@@ -1,0 +1,75 @@
+---
+title: "B.1.1 – Cloud Networking Requirements Assessment"
+description: Evidence requirements for control B.1.1 — a consistent approach to assessing customer cloud network connectivity and security requirements.
+sidebar:
+  label: "1.1 Cloud Networking Requirements Assessment"
+  order: 1
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+## What the Auditor Checks
+
+The auditor verifies how you **collect and assess customer cloud network connectivity and security requirements** to ensure adequate planning and sizing. The assessment must address all of the following:
+
+- Customer's Azure workloads (IaaS, PaaS, SaaS)
+- Cloud footprint (regions where workloads are deployed and accessed)
+- Terrestrial footprint (locations, branches, HQ / DC sites, remote access needs)
+- Cloud connectivity bandwidth and latency needs
+- Cloud connectivity HA, backup, and DR needs
+- Cloud network segmentation and security requirements
+- Private and internet connectivity needs
+- Documentation of the customer's existing network architecture, gap identification, best-practice recommendations
+
+**Typical questions:**
+- Walk me through your assessment methodology end-to-end.
+- Show me the assessment artifact for each of three customers.
+- How did you size the ExpressRoute / VPN bandwidth?
+
+---
+
+## Required Evidence Checklist
+
+| # | Evidence Item | Accepted Formats | Status |
+|---|---|---|---|
+| 1 | Assessment artifact — Customer A | PDF, Excel, Word | ⬜ |
+| 2 | Assessment artifact — Customer B | PDF, Excel, Word | ⬜ |
+| 3 | Assessment artifact — Customer C | PDF, Excel, Word | ⬜ |
+| 4 | Discovery-workshop outcomes — Customer A | PDF, PowerPoint | ⬜ |
+| 5 | Discovery-workshop outcomes — Customer B | PDF, PowerPoint | ⬜ |
+| 6 | Discovery-workshop outcomes — Customer C | PDF, PowerPoint | ⬜ |
+
+> **Three (3) unique customer cloud-connectivity projects, completed within the last 18 months.** Each artifact must address every bullet in the "What the auditor checks" list.
+
+<Aside type="tip">
+  The [Customer Qualification Questionnaire](../../engagement/qualification-questionnaire/) and [Discovery Workshop Kit](../../engagement/discovery-workshop/) in this repo are designed to produce a compliant assessment artifact on the first pass.
+</Aside>
+
+---
+
+## Evidence Guidance
+
+### Assessment artifact
+Use the Engagement Playbook's qualification questionnaire as the input form, and the discovery-workshop kit as the structured workshop. The output is a single per-customer assessment document covering all eight required topic areas.
+
+### Accepted formats
+Outputs from assessment tools, filled-in questionnaires, network design assessment checklists, 3rd-party tooling reports, signed SOWs (with details), templates, and discovery-workshop outcomes documentation.
+
+---
+
+## Evidence Status
+
+| Item | Owner | Status | Last Updated | Notes |
+|---|---|---|---|---|
+| Assessment – Customer A | | ⬜ Not started | | |
+| Assessment – Customer B | | ⬜ Not started | | |
+| Assessment – Customer C | | ⬜ Not started | | |
+
+---
+
+## Common Gaps
+
+- **Bandwidth / latency not sized in the assessment:** Auditors expect a numeric basis for the connectivity recommendation, not just "ExpressRoute".
+- **Terrestrial footprint missing:** Branch / DC inventory is often skipped — without it the connectivity design has no anchor.
+- **Generic discovery-workshop outputs:** The artifact must be customer-specific, not a re-used template with the name swapped.
+- **Less than 3 customers:** Hard requirement.

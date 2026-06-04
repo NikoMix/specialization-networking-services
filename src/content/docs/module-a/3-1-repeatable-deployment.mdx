@@ -1,0 +1,75 @@
+---
+title: "A.3.1 – Repeatable Deployment"
+description: Evidence requirements for control A.3.1 — repeatable deployment adhering to Azure Landing Zone design areas using Bicep, Terraform, or ARM.
+sidebar:
+  label: "3.1 Repeatable Deployment"
+  order: 5
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+## What the Auditor Checks
+
+The auditor verifies you can deploy Azure Landing Zones repeatably for two (2) unique customers using **Bicep, Terraform, OR ARM** (any one is sufficient), addressing at minimum:
+
+- **Identity** — adoption of identity management (Microsoft Entra ID or equivalent)
+- **Networking topology** — CAF-aligned network topology; hybrid via ExpressRoute / VPN Gateway / equivalent
+- **Resource organization** — tagging and naming standards
+
+Plus a completed **Azure Landing Zone Review** assessment confirming multi-regional or multi-zone redundancy policy is configured.
+
+**Typical questions:**
+- Show me the IaC repo or pipeline that deployed the landing zone for each customer.
+- Show me the ALZ Review export for each customer.
+- Which approach did you use — start-small, full ALZ, alternative, or brownfield?
+
+---
+
+## Required Evidence Checklist
+
+| # | Evidence Item | Accepted Formats | Status |
+|---|---|---|---|
+| 1 | **IaC source** (Bicep / Terraform / ARM) — Customer A | Git repo URL, ZIP, PDF | ⬜ |
+| 2 | **IaC source** (Bicep / Terraform / ARM) — Customer B | Git repo URL, ZIP, PDF | ⬜ |
+| 3 | **ALZ Review** assessment output — Customer A | PDF | ⬜ |
+| 4 | **ALZ Review** assessment output — Customer B | PDF | ⬜ |
+| 5 | Documented **approach** used (start-small / full ALZ / alternative / brownfield) | Word, PDF | ⬜ |
+| 6 | Identity, networking, and resource-organization configuration evidence | PDF, screenshot | ⬜ |
+
+<Aside type="tip">
+  The **ALZ Accelerator** (Bicep, Terraform, or Azure-portal experience) is explicitly accepted. You don't need to roll your own IaC if the Accelerator covers the customer's needs.
+</Aside>
+
+---
+
+## Evidence Guidance
+
+### IaC source
+Point the auditor to the repo + pipeline run that deployed the customer environment. Anonymise any tenant IDs.
+
+### ALZ Review
+Run the [Azure Landing Zone Review](https://learn.microsoft.com/assessments/) — confirm the redundancy posture (multi-region or multi-zone) and export per customer.
+
+### Approach justification
+If you deviated from the standard ALZ conceptual architecture, document the customer requirement that drove the deviation.
+
+---
+
+## Evidence Status
+
+| Item | Owner | Status | Last Updated | Notes |
+|---|---|---|---|---|
+| IaC – Customer A | | ⬜ Not started | | |
+| IaC – Customer B | | ⬜ Not started | | |
+| ALZ Review – Customer A | | ⬜ Not started | | |
+| ALZ Review – Customer B | | ⬜ Not started | | |
+| Approach narrative | | ⬜ Not started | | |
+
+---
+
+## Common Gaps
+
+- **"We use IaC" claim with no repo to walk through:** The repo / pipeline must be demonstrable live.
+- **No ALZ Review export:** Without it, the redundancy-policy requirement is unmet.
+- **Brownfield deployment with no remediation plan:** The brownfield approach is valid but you must show the **update plan** to align to best practices.
+- **Networking attributes missing:** Identity + Networking + Resource org must all be addressed unless the special Analytics / DW-Migration waiver applies (it does not apply to Networking Services).

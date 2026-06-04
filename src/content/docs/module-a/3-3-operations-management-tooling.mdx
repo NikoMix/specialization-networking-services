@@ -1,0 +1,71 @@
+---
+title: "A.3.3 – Operations Management Tooling"
+description: Evidence requirements for control A.3.3 — operations management tooling deployed (Monitor / Automation / Backup) plus a CI/CD security-evidence artifact.
+sidebar:
+  label: "3.3 Operations Management Tooling"
+  order: 7
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+## What the Auditor Checks
+
+The auditor verifies you have demonstrated the **documented deployment of at least one** of: **Azure Monitor**, OR **Azure Automation**, OR **Azure Backup / Site Recovery**, for two (2) unique customers in the past 12 months. Plus a CI/CD-integrated security-evidence artifact from automated checks (GitHub Actions / Azure DevOps / 3rd party integrated with Microsoft Security DevOps).
+
+**Typical questions:**
+- Walk me through how the customer monitors their Azure environment day-to-day.
+- Show me the CI/CD pipeline integrating security checks.
+- Where is the SBOM / scan report / policy compliance snapshot stored?
+
+---
+
+## Required Evidence Checklist
+
+| # | Evidence Item | Accepted Formats | Status |
+|---|---|---|---|
+| 1 | Documented deployment of **Azure Monitor / Automation / Backup** — Customer A | PDF, screenshot, IaC | ⬜ |
+| 2 | Documented deployment of **Azure Monitor / Automation / Backup** — Customer B | PDF, screenshot, IaC | ⬜ |
+| 3 | **One** of: security scan report, monitoring dashboard export, audit-ready YAML pipeline + code-scanning logs, SBOM, or policy-as-code compliance snapshot — Customer A | PDF, YAML, JSON | ⬜ |
+| 4 | **One** of: security scan report, monitoring dashboard export, audit-ready YAML pipeline + code-scanning logs, SBOM, or policy-as-code compliance snapshot — Customer B | PDF, YAML, JSON | ⬜ |
+
+<Aside type="caution">
+  All CI/CD artifacts must be **PII-free**, **IP-free**, **timestamped**, and **traceable to a specific pipeline run**. Strip tenant IDs, customer names from output paths, and resource group identifiers before submitting.
+</Aside>
+
+> Azure Advisor **Reliability Reviews** may also be referenced to identify and remediate findings (replaces the older "Resiliency Review" naming).
+
+---
+
+## Evidence Guidance
+
+### Operations tooling deployment
+Show the IaC that provisioned the chosen tool (Monitor / Automation / Backup), the configuration, and how alerts route to the operations team.
+
+### CI/CD security artifact (choose one)
+- **Security scan report** — static analysis (CodeQL) or secret-scanning export
+- **Monitoring dashboard export** — Azure Monitor / Log Analytics workbook
+- **Audit-ready YAML pipeline + code-scanning logs** — pipeline file showing integrated security tasks, plus the run output
+- **SBOM** — Software Bill of Materials
+- **Policy-as-code snapshot** — Azure Policy compliance results
+
+For GitHub Advanced Security on Azure DevOps configuration, see [Microsoft Learn](https://learn.microsoft.com/azure/devops/repos/security/configure-github-advanced-security-features).
+
+---
+
+## Evidence Status
+
+| Item | Owner | Status | Last Updated | Notes |
+|---|---|---|---|---|
+| Ops tooling deploy – Customer A | | ⬜ Not started | | |
+| Ops tooling deploy – Customer B | | ⬜ Not started | | |
+| Security artifact – Customer A | | ⬜ Not started | | |
+| Security artifact – Customer B | | ⬜ Not started | | |
+
+---
+
+## Common Gaps
+
+- **Sensitive identifiers in the artifact:** Customer names, tenant IDs, IP ranges leak into raw pipeline output — sanitise before submission.
+- **No traceability:** A scan report without a pipeline run ID / commit SHA is rejected.
+- **"We use Azure Monitor" with no deployment evidence:** Show the workspace ID, alert rules, and the IaC.
+- **Single customer:** The control requires **two unique** customers.

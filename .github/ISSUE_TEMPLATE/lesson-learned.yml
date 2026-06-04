@@ -1,0 +1,43 @@
+name: Lesson Learned
+description: Capture a lesson learned from a real engagement so it improves the next one
+title: "[lesson] <short description>"
+labels: ["innersource", "lesson-learned"]
+body:
+  - type: dropdown
+    id: phase
+    attributes:
+      label: Engagement phase
+      options:
+        - "Qualification"
+        - "Discovery"
+        - "Design"
+        - "Pilot / PoC"
+        - "Deployment"
+        - "Hypercare"
+        - "Operations / BAU"
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Context (customer anonymised)
+      placeholder: "Customer A — global retail, multi-region with ExpressRoute Direct."
+    validations:
+      required: true
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+    validations:
+      required: true
+  - type: textarea
+    id: what-we-learned
+    attributes:
+      label: What we learned / what to do differently
+    validations:
+      required: true
+  - type: textarea
+    id: artifact-impact
+    attributes:
+      label: Which repo artifact should change as a result?
+      placeholder: "Add note to LLD template re: BGP convergence assumption."

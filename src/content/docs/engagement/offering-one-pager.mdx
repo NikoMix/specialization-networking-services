@@ -1,0 +1,68 @@
+---
+title: "Offering One-Pager"
+description: Productised Azure Networking Foundation offering — outcomes, in-scope / out-of-scope, entry criteria, pricing shape, deliverables.
+sidebar:
+  label: "Offering One-Pager"
+  order: 1
+---
+
+## When to use this
+Use as the **first artifact shared with a prospective customer** — typically attached to a discovery-call invitation or shared in early conversations with the customer's IT director / cloud lead.
+
+## Inputs you need from the customer
+
+| Input | Why we need it |
+|---|---|
+| Industry + regulatory profile | Frames sovereignty / compliance requirements |
+| Current Azure footprint (subscriptions, regions) | Sizes the engagement |
+| Existing connectivity model | MPLS / SD-WAN / ExpressRoute baseline |
+| Internal sponsor name + role | Identifies the deal owner |
+
+## Step-by-step
+
+1. Open the [HLD template](./deliverables/hld-template/) and pull the "executive summary" block — use as the structure for the one-pager
+2. Insert the customer logo (with permission) and a single-line outcome statement
+3. Mark in-scope vs out-of-scope items explicitly (VWAN vs hub-spoke; ER vs VPN; Firewall Premium yes / no)
+4. Add entry criteria (Solutions Partner designation, executive sponsor, target go-live)
+5. Pick a pricing shape (T&M block / fixed-fee discovery + design / outcome-based) and add it as a sidebar
+6. List the exit deliverables explicitly — HLD, LLD, IaC, runbook, KT pack, hypercare plan
+7. Append a customer-reference slot (anonymised) at the bottom
+
+## Output: customer-ready deliverable
+
+A **1–2 page PDF** suitable for sharing with a customer's CTO / IT-director audience. Brand-aligned, with one outcome statement, three benefits, scope/out-of-scope, and price-shape sidebar.
+
+## Reuse & contribute back
+
+If you tightened any phrasing or added a slot that worked well, raise a **Template Improvement** issue tagged `engagement-playbook` so the next consultant inherits the improvement.
+
+---
+
+## Reference outline (copy into your customer-facing doc)
+
+### Productised: "Azure Networking Foundation"
+
+**Outcome:** &lt; 12 weeks to a production-ready landing-zone connectivity baseline (hub-spoke or VWAN), with secure edge, segmented spokes, observability, and operational runbooks.
+
+**Three benefits:** *(pick the most relevant three)*
+
+- Day-2 ready: runbooks, KT, hypercare baked in
+- Audit-aligned: outputs map to ALZ Review, WAR Networking, and security baseline
+- Reusable IaC (Bicep / Terraform) handed over to the customer
+
+**In scope:** hub-and-spoke or VWAN topology, segmentation, secure edge (Front Door + App Gateway), Azure Firewall (Standard or Premium), Bastion, Private Link, Private DNS, observability baseline (NSG flow logs, Connection Monitor, Network Insights).
+
+**Out of scope:** application refactoring, identity migration, workload re-platforming, ongoing managed network operations (separately quoted).
+
+**Entry criteria:** active Azure tenant, executive sponsor identified, ALZ or hub-spoke decision direction agreed, security architect engaged.
+
+**Pricing shape:**
+
+- *Discovery + Design* — fixed fee
+- *Pilot deployment* — fixed fee
+- *Production rollout* — T&M with capped scope or fixed fee depending on environment count
+- *Hypercare* — 30-day fixed retainer
+
+**Exit deliverables:** HLD, LLD, IaC repo + pipeline, runbooks, KT pack, hypercare plan, ALZ Review + WAR exports.
+
+**Customer reference:** *(Anonymised Customer A — global retail, multi-region VWAN with Secured Virtual Hub.)*

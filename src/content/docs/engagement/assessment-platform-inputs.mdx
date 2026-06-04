@@ -1,0 +1,76 @@
+---
+title: "Microsoft Assessment Platform Inputs"
+description: Mapping the relevant Microsoft assessments — CAF, ALZ Review, WAR, FinOps Review, Cloud Adoption Security Review, Azure Migrate — into the engagement.
+sidebar:
+  label: "Assessment Platform Inputs"
+  order: 5
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+## When to use this
+Reference whenever you need to know **which Microsoft assessment satisfies which control**, and at which engagement phase to run it.
+
+## Inputs you need from the customer
+
+| Input | Why |
+|---|---|
+| Subscription read access | Run platform-side assessments |
+| Customer signatory for assessment access | Required for some workspace assessments |
+| Existing assessment results (if any) | Avoid duplicate runs |
+
+## Assessment-to-control matrix
+
+| Assessment | Satisfies control(s) | Phase to run |
+|---|---|---|
+| **FinOps Review** | A.1.1 (required) | Strategy |
+| **Cloud Adoption Strategy Evaluator (CASE)** | A.1.1 (one of two assessments) | Strategy |
+| **Azure Migrate / MAP** | Sizing input for VPN / ER (B.1.1, B.2.1) | Assess |
+| **Cloud Adoption Security Review** | A.2.1 | Design & Govern |
+| **Well-Architected Review — Networking workload** | A.2.2 + B.2.2 | Design / pre-deploy |
+| **Azure Landing Zone Review** | A.3.1 (redundancy policy verification) | Manage & Optimize |
+| **Azure Advisor — Reliability Review** | A.3.3 cross-cut | Operate |
+| **DevOps Capability Assessment** | A.1.2 | Strategy / Plan |
+
+## Cloud Adoption Framework alignment
+
+Anchor every assessment output back to a specific CAF method:
+
+| CAF method | Networking artifact |
+|---|---|
+| **Strategy** | FinOps Review, CASE, business outcomes |
+| **Plan** | Cost mgmt + pricing calculator, DevOps capability assessment |
+| **Ready** | ALZ design areas (Identity, Network topology, Resource org), ALZ Review |
+| **Adopt** | Solution design, deployment evidence |
+| **Govern** | Cloud Adoption Security Review, Defender for Cloud baseline |
+| **Manage** | Azure Monitor / Network Insights, runbooks |
+| **Secure** | Firewall policy, Private Link coverage, DNS controls |
+
+## Azure Landing Zone — connectivity assessment
+
+When scoring **hub-spoke vs Virtual WAN** during the Ready phase, capture:
+
+| Dimension | Hub-spoke | Virtual WAN | Score weight |
+|---|---|---|---|
+| Operational complexity (multi-region) | Higher | Lower | 3 |
+| Branch connectivity (SD-WAN) | Manual NVA | Native | 3 |
+| ExpressRoute Direct support | Yes | Yes | 1 |
+| Inter-region transit | UDR / NVA | Native | 2 |
+| Secured-edge transit | NVA / 3rd-party | Secured Virtual Hub | 3 |
+| Customer maturity / preference | — | — | 2 |
+
+Document the scoring per customer — this becomes part of the B.2.1 design rationale.
+
+<Aside type="tip">
+  All Microsoft assessments referenced here should be run from the [Microsoft Learn assessments hub](https://learn.microsoft.com/assessments/) and the resulting PDF exported with the customer's name visible.
+</Aside>
+
+## Output: customer-ready deliverable
+
+- Per-customer **assessment register** listing each assessment run, the date, the result, and the action items
+- Cross-reference matrix from assessments → audit controls satisfied
+- Roadmap of follow-up assessments planned for the engagement
+
+## Reuse & contribute back
+
+If Microsoft adds, retires, or renames an assessment, raise a **Control Improvement** issue so this matrix stays current.

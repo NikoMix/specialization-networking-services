@@ -1,0 +1,61 @@
+---
+title: "Reference Architectures"
+description: Catalogue of reference architectures shipped with this engagement toolkit — hub-spoke, VWAN, secure edge, multi-region, PaaS isolation, hybrid baseline, landing-zone connectivity.
+sidebar:
+  label: "Reference Architectures"
+  order: 6
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+## When to use this
+Use during the design phase to anchor the customer's solution to a known-good starting point. Reference Architecture choice is captured in the [Discovery Workshop decision log](../discovery-workshop/).
+
+## Catalogue
+
+<CardGrid>
+  <Card title="Hub-and-spoke (classic)" icon="seti:default">
+    Single-region hub VNet + Azure Firewall + S2S VPN. The CAF baseline.
+    See: [hub-and-spoke](./reference-architectures/hub-and-spoke/)
+  </Card>
+  <Card title="Virtual WAN — Secured Virtual Hub" icon="seti:default">
+    Multi-region VWAN + Secured Virtual Hub + ExpressRoute.
+    See: [vwan-secured-hub](./reference-architectures/vwan-secured-hub/)
+  </Card>
+  <Card title="Secure edge / internet ingress" icon="seti:default">
+    Front Door (WAF) → Application Gateway → backend.
+    See: [secure-edge](./reference-architectures/secure-edge/)
+  </Card>
+  <Card title="Multi-region traffic management" icon="seti:default">
+    Front Door / Traffic Manager + paired-region failover.
+    See: [multi-region-traffic](./reference-architectures/multi-region-traffic/)
+  </Card>
+  <Card title="PaaS isolation" icon="seti:default">
+    Private Endpoints + Private DNS + DNS Private Resolver.
+    See: [paas-isolation](./reference-architectures/paas-isolation/)
+  </Card>
+  <Card title="Hybrid connectivity baseline" icon="seti:default">
+    ExpressRoute + VPN failover, Global Reach.
+    See: [hybrid-connectivity](./reference-architectures/hybrid-connectivity/)
+  </Card>
+  <Card title="Landing-zone connectivity" icon="seti:default">
+    Alignment with CAF / ALZ network topology decisions.
+    See: [landing-zone-connectivity](./reference-architectures/landing-zone-connectivity/)
+  </Card>
+</CardGrid>
+
+## How each reference page is structured
+
+| Section | Purpose |
+|---|---|
+| **Context** | When this architecture fits the customer's profile |
+| **Diagram** | Topology and traffic flow |
+| **Component table** | SKU / tier rationale per component |
+| **Data flow narrative** | What traverses each link, in what direction, why |
+| **IaC starter link** | Bicep / Terraform / ALZ Accelerator path |
+| **Known limitations** | Where this design starts to creak |
+| **When to choose / when NOT to choose** | Decision criteria |
+
+## Reuse & contribute back
+
+New architecture? Raise a **Template Improvement** issue labelled `reference-architecture`, then PR a new MDX file under `reference-architectures/` following the structure above.

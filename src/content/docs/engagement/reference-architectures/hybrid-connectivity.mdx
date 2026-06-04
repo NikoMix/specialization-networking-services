@@ -1,0 +1,58 @@
+---
+title: "Hybrid connectivity baseline"
+description: ExpressRoute + VPN failover with Global Reach for resilient hybrid connectivity.
+sidebar:
+  label: "Hybrid connectivity"
+  order: 6
+---
+
+## Context
+The baseline hybrid pattern: **ExpressRoute primary, VPN backup**, with ExpressRoute Global Reach for cross-on-prem-site routing through the Microsoft backbone.
+
+## Diagram
+
+```
+[On-prem DC A] ── ER circuit ──┐
+                              ├── [Microsoft Edge / ER peering]  ─── [Azure Region]
+[On-prem DC B] ── ER circuit ──┘                                          │
+        │                                                                  │
+        └────── S2S VPN (backup) ──────────────────────────────────────── [VPN Gateway]
+
+(Global Reach: DC A ←→ DC B over MSFT backbone via ER circuits)
+```
+
+## Component table
+
+| Component | SKU / tier | Rationale |
+|---|---|---|
+| ExpressRoute circuit | Standard or Premium | Premium for global region access + Global Reach |
+| ExpressRoute Direct | 10/100 Gbps | When &gt; 10 Gbps or sovereignty needs |
+| ER Gateway | ErGw2Az or ErGw3Az | Zone-redundant; FastPath if low latency required |
+| VPN Gateway | VpnGw2 AZ active-active | Backup path |
+| Global Reach | Add-on per circuit | Cross-DC over MSFT backbone |
+| BGP | Required | Convergence behaviour matters |
+
+## Data flow narrative
+
+- Normal: on-prem → ER → Microsoft Edge → ER Gateway → hub VNet
+- Failure: ER path withdrawn via BGP → VPN takes over (asymmetric routing must be controlled — use BGP weight / AS path prepending)
+- Global Reach: on-prem A → ER → MSFT backbone → ER → on-prem B (no Azure VNet traversal)
+
+## IaC starter
+- [ExpressRoute + VPN coexistence](https://learn.microsoft.com/azure/expressroute/expressroute-howto-coexist-resource-manager)
+- ALZ connectivity subscription patterns
+
+## Known limitations
+
+- Asymmetric routing under failover requires careful BGP tuning
+- VPN as backup must match the ER bandwidth profile (usually doesn't — model RTO accordingly)
+- FastPath has subnet / scale unit constraints
+
+## When to choose
+- Customer has existing carrier circuits
+- Hybrid steady-state with high availability requirements
+- Cross-DC traffic that benefits from Microsoft backbone
+
+## When NOT to choose
+- Customer is fully cloud-native (no hybrid)
+- Single DC with low criticality (single ER circuit + VPN backup is overkill)

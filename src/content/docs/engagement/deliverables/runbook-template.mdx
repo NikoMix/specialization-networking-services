@@ -1,0 +1,88 @@
+---
+title: "Runbook Template"
+description: Operational runbook template covering failover, firewall changes, certificate rotation, DDoS response, NSG/Connection-Monitor triage, and change-control specifics.
+sidebar:
+  label: "Runbook Template"
+  order: 3
+---
+
+## How to use
+The runbook is the **operational truth** for the customer's BAU team. Procedures are executable, not narrative — every step is unambiguous and includes a rollback gate.
+
+---
+
+# \{Customer} — Azure Networking Runbook
+
+**Document owner:** \{Author} · **Version:** 0.1 · **Date:** \{YYYY-MM-DD} · **Status:** Draft
+
+## 1. Roles and contacts
+| Role | Primary | Backup | Channel |
+|---|---|---|---|
+
+## 2. Change-control framework
+- **Maintenance windows:** *(list)*
+- **Change classes:** Standard / Normal / Emergency
+- **BGP convergence expectations:** worst-case 90s on ER, 30s on VPN
+- **Blast-radius checklist** (must be filled before every change):
+  - [ ] Affected spokes identified
+  - [ ] Affected workload owners notified
+  - [ ] Peer (ITSM) ticket raised + linked
+  - [ ] Rollback verified in non-prod within last 7 days
+- **Rollback gates per class:**
+  - Standard: rollback if any monitored SLI degrades &gt; 5%
+  - Normal: rollback per published step
+  - Emergency: rollback per declared incident commander
+
+## 3. Procedure: ExpressRoute ↔ VPN failover
+1. Verify both paths are healthy (Connection Monitor probes)
+2. Drain ER path: BGP weight adjustment / AS path prepend
+3. Verify VPN path takes traffic (Traffic Analytics)
+4. Restore ER: revert BGP changes; wait for convergence
+5. Rollback gate: if &gt; 5% packet loss, revert immediately
+
+## 4. Procedure: Firewall rule change
+1. Open ITSM ticket
+2. Author rule in non-prod Firewall policy
+3. Test traffic flow
+4. Promote to prod parent policy
+5. Validate via test traffic + flow logs
+6. Rollback: delete rule; trigger policy push
+
+## 5. Procedure: Certificate rotation (App Gateway / Front Door)
+1. Generate new cert (Key Vault)
+2. Add to AppGW / AFD listener as additional certificate
+3. Switch primary
+4. Validate via curl / Postman
+5. Remove old cert after grace period (≥ 24h)
+6. Rollback: re-pin old cert (still in Key Vault history)
+
+## 6. Procedure: DDoS incident response
+1. Confirm DDoS metric spike in Azure Monitor
+2. Engage Azure Rapid Response (if subscribed)
+3. Enable / verify telemetry capture to SIEM
+4. Hold change-window; capture mitigation report
+5. Post-incident: review WAF rules, traffic baselines
+
+## 7. Procedure: NSG flow log triage
+1. Open Traffic Analytics geo-map → identify anomalous flows
+2. Drill to NSG → identify allowed/denied flow source
+3. Cross-reference with workload inventory
+4. Escalate to workload owner or security team
+
+## 8. Procedure: Connection Monitor alert response
+1. Identify probe + endpoints affected
+2. Check synthetic transactions in last 1h
+3. Correlate to recent changes
+4. Engage Azure support if backbone-side
+5. Document RCA in ITSM
+
+## 9. Procedure: Bastion / Just-in-Time access
+- Standard JIT request flow
+- Emergency-break-glass procedure (documented, audited)
+
+## 10. Escalation matrix
+| Severity | Response | Restoration | Escalation path |
+|---|---|---|---|
+| SEV-1 | 15 min | 4 h | Customer ops → MSP on-call → Microsoft Premier |
+| SEV-2 | 30 min | 8 h | Customer ops → MSP on-call |
+| SEV-3 | 4 h | 2 BD | ITSM standard |

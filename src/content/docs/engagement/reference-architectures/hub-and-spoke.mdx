@@ -1,0 +1,62 @@
+---
+title: "Hub-and-spoke (classic)"
+description: Single-region hub VNet + Azure Firewall + S2S VPN — the CAF baseline.
+sidebar:
+  label: "Hub-and-spoke"
+  order: 1
+---
+
+## Context
+The CAF baseline topology. Use when the customer is **single-region or two-region max**, has a small branch footprint, and the network team prefers explicit control over routing.
+
+## Diagram
+*Placeholder for the customer-specific topology diagram. Use Visio / Miro / draw.io and embed as PNG/SVG.*
+
+```
+[On-prem] ── S2S VPN / ExpressRoute ── [Hub VNet]
+                                         ├── Azure Firewall
+                                         ├── Azure Bastion
+                                         ├── VPN Gateway
+                                         └── (peering)
+                                                  ├── [Spoke: prod]
+                                                  ├── [Spoke: non-prod]
+                                                  └── [Spoke: shared services]
+```
+
+## Component table
+
+| Component | SKU / tier | Rationale |
+|---|---|---|
+| Hub VNet | /20 minimum | Headroom for added subnets |
+| Azure Firewall | Standard or Premium | Premium when TLS inspection / IDPS needed |
+| VPN Gateway | VpnGw2 / VpnGw3 AZ | Active-active for HA |
+| ExpressRoute Gateway | ErGw1Az / ErGw2Az | Zone-redundant |
+| Bastion | Standard | Native shareable; per-region |
+| Spoke VNets | Per workload | Peered to hub, default route via Firewall |
+
+## Data flow narrative
+
+- **Spoke → Internet**: spoke → UDR 0.0.0.0/0 → Azure Firewall → Internet
+- **Spoke ↔ Spoke**: peering does not transit by default — forced via UDR through Firewall
+- **Spoke ↔ on-prem**: spoke → UDR → Firewall → Gateway → ExpressRoute / VPN → on-prem
+- **Spoke ↔ PaaS (Private Endpoint)**: spoke → Private Endpoint NIC in spoke (no UDR transit)
+
+## IaC starter
+- [Azure Landing Zone — Hub-and-Spoke (Bicep / Terraform)](https://github.com/Azure/Enterprise-Scale)
+- Reference: `caf-terraform-landingzones` (3rd-party but widely used)
+
+## Known limitations
+
+- Multi-region requires manual hub-to-hub peering + UDR maintenance
+- Branch (SD-WAN) integration is via NVA in the hub (not native)
+- Cross-region transit via UDR + NVA can become brittle at scale
+
+## When to choose
+- Single-region or paired-region with low cross-region transit
+- Customer has strong existing networking ops team
+- Branch count is small (&lt; 25 sites)
+
+## When NOT to choose
+- &gt; 2 Azure regions
+- &gt; 25 branches / SD-WAN integration
+- Customer wants Microsoft-managed transit (use VWAN instead)

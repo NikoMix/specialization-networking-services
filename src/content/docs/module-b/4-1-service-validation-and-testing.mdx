@@ -1,0 +1,70 @@
+---
+title: "B.4.1 – Service Validation and Testing"
+description: Evidence requirements for control B.4.1 — documented testing, validation, and performance evaluation including customer sign-off.
+sidebar:
+  label: "4.1 Service Validation and Testing"
+  order: 6
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+## What the Auditor Checks
+
+The auditor verifies you validate the deployment, including:
+
+- A documented process and approach to testing and evaluating performance of network-services deployment
+- Assurance the customer's performance and security requirements are met
+- Assurance the deployment adheres to Azure best practices
+- Remediation for issues revealed during testing
+
+**Typical questions:**
+- Show me the test plan and the executed results for this customer.
+- Where is the customer sign-off?
+- What was remediated as a result of testing, and how?
+
+---
+
+## Required Evidence Checklist
+
+| # | Evidence Item | Accepted Formats | Status |
+|---|---|---|---|
+| 1 | Documented testing & validation process | PDF, Word | ⬜ |
+| 2 | Executed test results for the customer | PDF, Excel | ⬜ |
+| 3 | Performance evaluation against requirements | PDF | ⬜ |
+| 4 | Best-practice adherence review | PDF, Word | ⬜ |
+| 5 | Remediation log for issues found in testing | PDF, Excel | ⬜ |
+| 6 | **Customer sign-off** confirming the solution meets expectations | PDF (signed) | ⬜ |
+
+> One (1) customer, project completed within the last **18 months**. **Verbal sign-off is insufficient** — must be documented.
+
+<Aside type="caution">
+  This is the only Module B control that explicitly **requires customer sign-off**. Plan the sign-off step into your engagement schedule — chasing it after the fact is the most common audit blocker on this control.
+</Aside>
+
+---
+
+## Evidence Guidance
+
+### Test plan & results
+Use the [Runbook template](../../engagement/deliverables/runbook-template/) `Testing` section as the starting frame. Combine functional tests, performance tests (throughput, latency budgets), and security tests (segmentation, ingress / egress).
+
+### Customer sign-off
+A signed PDF (or signed acceptance form in your engagement tooling) explicitly stating the deployment meets customer expectations. Include the customer signatory name, role, and date.
+
+---
+
+## Evidence Status
+
+| Item | Owner | Status | Last Updated | Notes |
+|---|---|---|---|---|
+| Test plan | | ⬜ Not started | | |
+| Test results | | ⬜ Not started | | |
+| Customer sign-off | | ⬜ Not started | | |
+
+---
+
+## Common Gaps
+
+- **No sign-off:** The #1 reason this control fails. Build sign-off into the engagement plan from day one.
+- **Testing did not cover security requirements:** Add an explicit security-test section (segmentation, NSG enforcement, Firewall policy).
+- **No remediation log:** Even a "no defects" log entry with sign-off beats silence.

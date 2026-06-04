@@ -1,0 +1,109 @@
+---
+title: "Definition of Done"
+description: Acceptance criteria for each engagement deliverable and the audit-evidence cross-reference matrix.
+sidebar:
+  label: "Definition of Done"
+  order: 8
+---
+
+## Purpose
+
+Every deliverable in this engagement has a clear, testable definition of done. Use this page as the gating checklist before declaring a phase complete.
+
+## Per-deliverable acceptance criteria
+
+### Qualification questionnaire (output of `qualification-questionnaire.mdx`)
+
+- [ ] All 10 sections answered (or explicitly marked N/A with rationale)
+- [ ] Customer review and confirmation captured (signed PDF or email)
+- [ ] Feeds the [B.1.1 evidence](../module-b/1-1-cloud-networking-requirements-assessment/)
+
+### Discovery workshop (output of `discovery-workshop.mdx`)
+
+- [ ] 3-day agenda executed (or compressed with explicit customer agreement)
+- [ ] Decision log seeded with ≥ 10 decisions
+- [ ] Traffic-flow diagrams captured for ≥ 3 representative workloads
+- [ ] Roadmap-on-a-page signed off by customer sponsor
+
+### WAF assessment (output of `waf-assessment.mdx`)
+
+- [ ] 2 pillars completed per customer (Reliability + one other)
+- [ ] WAR export PDF, customer-named, attached to evidence pack
+- [ ] 1-page action plan with top 5 findings + owner + date
+- [ ] Satisfies both [A.2.2](../module-a/2-2-well-architected-workloads/) and [B.2.2](../module-b/2-2-azure-well-architected-review/)
+
+### Solution design (HLD)
+
+- [ ] All 6 design-point coverage items from [B.2.1](../module-b/2-1-solution-design/) addressed
+- [ ] Reference architecture explicitly cited
+- [ ] CAF network-topology alignment documented
+- [ ] Decision log updated with design-phase decisions
+- [ ] Customer sponsor sign-off
+
+### LLD
+
+- [ ] Subnet plan + address allocation
+- [ ] NSG / ASG matrices
+- [ ] UDR tables
+- [ ] Firewall rule taxonomy
+- [ ] DNS zone delegation
+- [ ] RBAC matrix
+- [ ] IaC module list (Bicep / Terraform / ARM)
+- [ ] Cross-referenced to HLD
+
+### IaC repo
+
+- [ ] Pipeline green on a clean run
+- [ ] Bicep / Terraform / ARM source (any one)
+- [ ] ALZ Review run + redundancy-policy verified
+- [ ] Parameter files separated from logic
+- [ ] README documents the deployment sequence
+- [ ] Customer handover transfer-of-ownership documented
+
+### Runbook
+
+- [ ] Failover procedures (ER ↔ VPN)
+- [ ] Firewall rule change procedure
+- [ ] Certificate rotation (App Gateway / Front Door)
+- [ ] DDoS incident response
+- [ ] NSG flow log triage
+- [ ] Connection Monitor alert response
+- [ ] Change-control specifics: maintenance windows, BGP convergence, blast-radius checklist, peer notification, rollback gates
+
+### KT plan
+
+- [ ] Sessions scheduled: topology walk, runbook walkthrough, IaC pipeline, observability
+- [ ] Attendee register
+- [ ] Recordings + decks archived in customer's tooling
+- [ ] Skills uplift confirmation (customer team signs off)
+
+### Hypercare plan
+
+- [ ] 30-day on-call rota agreed
+- [ ] Incident-severity definitions
+- [ ] Exit criteria (zero P1/P2 in last 7 days, runbook validated, customer accepts)
+- [ ] Defect classification
+- [ ] Handover sign-off
+
+### Customer sign-off (B.4.1)
+
+- [ ] Documented sign-off (PDF, signed) confirming solution meets expectations
+
+## Audit-evidence cross-reference matrix
+
+| Deliverable | Module A controls satisfied | Module B controls satisfied |
+|---|---|---|
+| Qualification questionnaire output | — | B.1.1 |
+| Discovery workshop output | — | B.1.1 (traffic flows), B.2.1 (CAF alignment) |
+| WAR export | A.2.2 | B.2.2 |
+| HLD | — | B.2.1, B.3.1 (when paired with as-built) |
+| LLD | — | B.3.1, B.3.2 |
+| IaC repo + ALZ Review | A.3.1 | B.3.2 (services configured) |
+| Runbook | — | B.4.2 |
+| Test results + sign-off | — | B.4.1 |
+| As-built | — | B.4.2 |
+| KT plan | A.3.2 | — |
+| Hypercare plan | A.3.3 (ops tooling) | B.4.2 (managed-service alternative) |
+| FinOps Review + CASE | A.1.1 | — |
+| Cost mgmt + DevOps capability assessment | A.1.2 | — |
+| Defender baseline + Cloud Adoption Security Review | A.2.1 | — |

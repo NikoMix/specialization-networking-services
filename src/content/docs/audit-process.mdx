@@ -1,0 +1,153 @@
+---
+title: Audit Process
+description: End-to-end walkthrough of the Networking Services in Microsoft Azure Advanced Specialization third-party remote audit administered by ISSI.
+sidebar:
+  order: 3
+---
+
+import { Aside, Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+
+## Overview
+
+The audit is conducted by **Information Security Systems International, LLC (ISSI)** — Microsoft's third-party audit firm. The audit is performed remotely (video call + live document and system demonstrations) and follows a fixed 11-step process. Total duration: **4 hours for Module B**, **8 hours for Module A + B combined**.
+
+<Aside type="tip">
+  Partners who prepare their evidence package in advance (using this guide) consistently report faster audit cycles and avoid the Gap Review Meeting entirely. Aim to have all evidence collected and indexed **before** requesting the audit.
+</Aside>
+
+---
+
+## The 11-Step Audit Process
+
+<Steps>
+
+1. ### Review the checklist + prepare evidence
+   You review specialization requirements in Partner Center, read this guide thoroughly, and assemble evidence + SME personnel for the audit.
+
+2. ### Meet prerequisites and apply
+   Application is submitted in **two stages** in Partner Center: (1) prerequisite requirements, (2) audit. Do not apply unless you are ready to undertake the audit within the schedule window.
+
+3. ### Microsoft validates eligibility
+   Microsoft confirms you meet all prerequisites.
+
+4. ### Microsoft confirms with ISSI
+   Microsoft notifies the third-party audit company that you are eligible.
+
+5. ### ISSI schedules the audit
+   The auditor will schedule with you **within 2 business days**.
+
+6. ### Audit is conducted
+   Within **30 calendar days** of approval. Module B = 4 hours; Module A + B = 8 hours. You provide access to the appropriate SME personnel, **live demonstrations**, and source documents.
+
+7. ### Gap Report (if applicable)
+   If any Open Action Items remain, ISSI provides a Gap Report **within 2 business days** of the audit.
+
+8. ### Partner acknowledges and schedules Gap Review Meeting
+   **Within 2 business days** of receiving the Gap Report. Begin immediate remediation of open items.
+
+9. ### Gap Review Meeting completed
+   **Within 15 calendar days** of the Gap Report being sent. The meeting may last **no longer than 1 hour**. Present evidence addressing all Open Action Items.
+
+10. ### Final Report issued
+    To the partner **within 5 business days**. ISSI notifies Microsoft of Pass / No Pass.
+
+11. ### Microsoft notifies you
+    About program status **within 2 business days** of the Final Report.
+
+</Steps>
+
+---
+
+## What "Pass" gives you
+
+- A **Pass** result satisfies the audit requirement for **two (2) years**.
+- "No Pass" status resets in Partner Center from "Audit Failed" to "Not Enrolled" **within 1 week**, allowing reapplication.
+
+---
+
+## Evidence ground rules
+
+All audit evidence must be:
+
+- **Reproducible** — the auditor can repeat the access path to the source artifact.
+- **Verifiable** — traceable to a live system, signed document, or named customer engagement.
+- **Customer-specific** — generic capability decks are not evidence on their own.
+
+<Aside type="caution">
+  **PowerPoints are acceptable for high-level overview only.** You must also be prepared to present **live demonstrations from source files** (CI pipelines, Azure portal, repo, Microsoft Learn transcripts, signed PDFs). Excerpts on slides are not stand-alone evidence.
+</Aside>
+
+The auditor will **probe for more information** — how a document was created, where it lives, what source materials were used. This is normal and is how they validate that the process is mature, repeatable, and effective.
+
+---
+
+## Evidence collection map
+
+Use the [Evidence Tracker](../evidence-tracker/) to manage collection across all controls.
+
+<Tabs>
+  <TabItem label="Module A – Cloud Foundation">
+    | Control | Key Evidence |
+    |---|---|
+    | [A.1.1 Cloud & AI Adoption Business Strategy](../module-a/1-1-cloud-ai-adoption-business-strategy/) | FinOps Review (required) + CASE for 2 customers |
+    | [A.1.2 Cloud & AI Adoption Plan](../module-a/1-2-cloud-ai-adoption-plan/) | Cost mgmt report + DevOps capability assessment for 2 customers |
+    | [A.2.1 Security & Governance Tooling](../module-a/2-1-security-governance-tooling/) | Defender for Cloud baseline + Cloud Adoption Security Review |
+    | [A.2.2 Well-Architected Workloads](../module-a/2-2-well-architected-workloads/) | WAR completed for 2 customers' workloads before deployment |
+    | [A.3.1 Repeatable Deployment](../module-a/3-1-repeatable-deployment/) | Bicep / Terraform / ARM IaC + ALZ Review for 2 customers |
+    | [A.3.2 Plan for Skilling](../module-a/3-2-plan-for-skilling/) | Skilling plan for 2 customer engagements |
+    | [A.3.3 Operations Management Tooling](../module-a/3-3-operations-management-tooling/) | Azure Monitor / Automation / Backup deployed + CI/CD security artifact |
+  </TabItem>
+  <TabItem label="Module B – Networking Services">
+    | Control | Key Evidence |
+    |---|---|
+    | [B.1.1 Cloud Networking Requirements Assessment](../module-b/1-1-cloud-networking-requirements-assessment/) | Assessment docs for 3 customers |
+    | [B.2.1 Solution Design](../module-b/2-1-solution-design/) | Solution Design docs for 3 customers covering ≥1 scenario |
+    | [B.2.2 Azure Well-Architected Review](../module-b/2-2-azure-well-architected-review/) | WAR exported results, 2 pillars min, for 1 networking workload |
+    | [B.3.1 Cloud Networking Scenarios](../module-b/3-1-cloud-networking-scenarios/) | Production deployment evidence for 1 of 5 scenarios |
+    | [B.3.2 Azure Networking Services](../module-b/3-2-azure-networking-services/) | ≥ 5 native services implemented across customer projects |
+    | [B.4.1 Service Validation and Testing](../module-b/4-1-service-validation-and-testing/) | Testing / validation docs + customer sign-off |
+    | [B.4.2 Post-deployment Documentation](../module-b/4-2-post-deployment-documentation/) | As-built docs / SOPs / runbooks |
+  </TabItem>
+</Tabs>
+
+---
+
+## Optional ISSI prep offers
+
+To ensure objectivity, the consulting auditor and the audit auditor are different ISSI individuals.
+
+| Offer | Length | Notes |
+|---|---|---|
+| Audit Process & Controls Overview | 1 hour | High-level walkthrough of process + checklist requirements |
+| Audit Readiness Consulting | In-depth | Extensive remote consulting engagement; paid |
+
+Schedule directly with ISSI during the audit-scheduling phase.
+
+---
+
+## Timeline summary
+
+| Phase | Typical Duration |
+|---|---|
+| Pre-qualification confirmation | 1–2 weeks |
+| Application → Microsoft validation | 1–2 weeks |
+| ISSI scheduling | 2 business days |
+| Audit conducted (within 30 days of approval) | 4–8 hours |
+| Gap Report (if applicable) | Within 2 business days |
+| Gap Review Meeting | Within 15 calendar days, ≤ 1 hour |
+| Final Report | Within 5 business days |
+| Microsoft Partner Center update | Within 2 business days of Final Report |
+| **Total (well-prepared partner)** | **~4–6 weeks end-to-end** |
+
+---
+
+## Key contacts
+
+| Role | Responsibility |
+|---|---|
+| **Microsoft PDM** | Pre-qualification confirmation, Partner Center queries |
+| **ISSI auditor** | Audit scheduling, evidence review, Final Report |
+| **Internal engagement lead** | Evidence collection coordination |
+| **Network architect (AZ-700)** | Module B technical evidence (controls B.1.1 – B.4.2) |
+| **Cloud architect (AZ-305)** | Module A controls (A.1.1 – A.3.3) |
+| **Security architect (SC-100)** | A.2.1 + Firewall / DDoS / Private Link evidence in Module B |

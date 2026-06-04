@@ -1,0 +1,83 @@
+---
+title: "Content Governance"
+description: The Draft → Reviewed → Endorsed → Deprecated content lifecycle for this innersource repository.
+sidebar:
+  label: "Content Governance"
+  order: 2
+---
+
+## Why content has a lifecycle
+
+Content rots. An audit-version update, a renamed Azure service, or a deprecated SKU can silently invalidate guidance. We track each content artefact's **maturity state** so consultants know what's safe to use with a customer.
+
+## Lifecycle states
+
+### 🟦 Draft
+- Recently created; not yet reviewed
+- May contain placeholders, unverified claims, or stale links
+- **Use with caution** — confirm details before customer-facing use
+- Default state for any new MDX file
+
+### 🟨 Reviewed
+- At least one CODEOWNER has reviewed the content
+- Technical accuracy confirmed at point of review
+- May not yet reflect the latest audit version
+- **Use freely internally**; spot-check for customer-facing use
+
+### 🟩 Endorsed
+- Reviewed AND validated against the current audit version (V1.8.1)
+- At least one engagement has used the content end-to-end
+- Recommended for customer-facing engagements
+- **Default trust level** for production use
+
+### 🟥 Deprecated
+- Superseded, retired, or invalidated
+- Kept in the repository for historical context only
+- Must include a `> Deprecated:` callout linking to the replacement
+- **Do not use** in customer engagements
+
+## How to mark state
+
+Add a frontmatter `lifecycle` key:
+
+```yaml
+---
+title: "..."
+lifecycle: endorsed
+lifecycle_reviewer: "@NikoMix"
+lifecycle_review_date: "2026-01-15"
+audit_version: "V1.8.1"
+---
+```
+
+For deprecated content, also add a top-of-page callout:
+
+```mdx
+import { Aside } from '@astrojs/starlight/components';
+
+<Aside type="caution" title="Deprecated">
+  This content has been replaced by [the new page](../path). Do not use in customer engagements.
+</Aside>
+```
+
+## State transitions
+
+| From | To | Trigger |
+|---|---|---|
+| Draft | Reviewed | CODEOWNER review pass |
+| Reviewed | Endorsed | First successful customer engagement using the content |
+| Endorsed | Reviewed | New audit version published — re-validation required |
+| Any | Deprecated | Superseded, service retired, or audit version retired |
+
+## Cadence
+
+- **Quarterly audit:** CODEOWNERS sweep all Endorsed content and confirm or downgrade
+- **On audit-version change:** all Endorsed content drops to Reviewed pending re-validation
+- **On Azure service deprecation:** affected pages flagged via issue, then Deprecated within 30 days
+
+## Audit version mapping
+
+| Audit version | Status |
+|---|---|
+| V1.8.1 | Active (1 Jan – 30 Jun 2026) — current target |
+| V1.9 | PREVIEW — partner feedback period |

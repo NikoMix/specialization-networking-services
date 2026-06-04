@@ -1,0 +1,63 @@
+---
+title: "Multi-region traffic management"
+description: Front Door / Traffic Manager + paired-region failover for active-active or active-passive.
+sidebar:
+  label: "Multi-region traffic"
+  order: 4
+---
+
+## Context
+Use when the customer needs **regional failover** or **active-active** for HA / DR. Pattern depends on protocol — HTTP(S) uses Front Door; non-HTTP uses Traffic Manager (DNS) or Cross-region Load Balancer (anycast).
+
+## Diagram
+
+```
+                  [Azure Front Door (HTTP/S)]
+                  or [Traffic Manager (DNS)]
+                  or [Cross-region LB (anycast)]
+                      │
+        ┌─────────────┴─────────────┐
+   [Region A — primary]        [Region B — secondary or active]
+        │                            │
+   AppGW + backend            AppGW + backend
+        │                            │
+   Zone-redundant data         Zone-redundant data
+        │                            │
+        └──── Async / sync replication ────┘
+```
+
+## Component table
+
+| Layer | Component | Notes |
+|---|---|---|
+| Global routing | Front Door (HTTP), Traffic Manager (DNS), Cross-region LB (TCP) | One per workload class |
+| Health probing | AFD probes / TM endpoints / CRL backend health | Probe interval matters for RTO |
+| Regional ingress | App Gateway v2 / Load Balancer | Per region |
+| State | SQL DB geo-replication, Storage RA-GRS, Cosmos multi-region | Aligned to RPO |
+| DNS | Azure DNS with low TTL on critical names | TTL ≤ 60s for TM |
+
+## Data flow narrative
+
+- Active-passive: AFD/TM directs all traffic to Region A; if probes fail, traffic shifts to Region B within probe-interval window
+- Active-active: traffic split by latency / weighted; both regions handle reads; writes consolidated per data tier
+- DNS-based (TM) failover bounded by client DNS cache (mind low TTL trade-off)
+
+## IaC starter
+- [Multi-region web app reference](https://learn.microsoft.com/azure/architecture/web-apps/app-service/architectures/multi-region)
+- Cross-region Load Balancer: [TCP global anycast](https://learn.microsoft.com/azure/load-balancer/cross-region-overview)
+
+## Known limitations
+
+- Traffic Manager is **DNS-only** — clients with bad DNS caching bypass it
+- Front Door is HTTP/S only
+- Cross-region LB latency depends on anycast routing — measure
+- Stateful workloads need explicit replication design
+
+## When to choose
+- RTO / RPO requires &lt; 1 region scope
+- Paired-region strategy is mandated
+- Active-active for throughput
+
+## When NOT to choose
+- Single-region SLA is sufficient
+- Cost-sensitive workloads where one-region with zone-redundancy suffices

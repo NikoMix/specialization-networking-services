@@ -1,0 +1,65 @@
+---
+title: "A.2.2 – Well-Architected Workloads"
+description: Evidence requirements for control A.2.2 — workloads designed to be well-architected and prepared for production using the Microsoft Well-Architected Review.
+sidebar:
+  label: "2.2 Well-Architected Workloads"
+  order: 4
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+## What the Auditor Checks
+
+The auditor verifies you design workloads that are well-architected and **prepared for production**, using Architecture Center reference architectures and a completed **Well-Architected Review** (Go-Live WAR or Standard WAR) for workloads **about to be deployed**.
+
+**Typical questions:**
+- Which reference architecture from Architecture Center did you align this design to?
+- Show me the exported Well-Architected Review for each customer.
+- Where did the WAR change your design before production?
+
+---
+
+## Required Evidence Checklist
+
+| # | Evidence Item | Accepted Formats | Status |
+|---|---|---|---|
+| 1 | Architecture-Center alignment notes — Customer A | PDF, Word | ⬜ |
+| 2 | Architecture-Center alignment notes — Customer B | PDF, Word | ⬜ |
+| 3 | **Well-Architected Review** export — Customer A | PDF | ⬜ |
+| 4 | **Well-Architected Review** export — Customer B | PDF | ⬜ |
+| 5 | Evidence the review happened **before deployment** (date stamps) | PDF, screenshot | ⬜ |
+
+> Two (2) unique customer projects completed within the **past 12 months**.
+
+<Aside type="tip">
+  For networking-led engagements the WAR's **Reliability**, **Security**, and **Performance Efficiency** pillars are the most relevant — partners typically include at least these three.
+</Aside>
+
+---
+
+## Evidence Guidance
+
+### Architecture Center alignment
+Reference the specific page(s) from [Azure Architecture Center](https://learn.microsoft.com/azure/architecture/) you aligned to. Capture deltas (where the customer's design diverged and why).
+
+### Well-Architected Review
+Run the [Well-Architected Review](https://learn.microsoft.com/assessments/azure-architecture-review/) per workload. Export the customer-named report.
+
+---
+
+## Evidence Status
+
+| Item | Owner | Status | Last Updated | Notes |
+|---|---|---|---|---|
+| Arch Center alignment – Customer A | | ⬜ Not started | | |
+| Arch Center alignment – Customer B | | ⬜ Not started | | |
+| WAR export – Customer A | | ⬜ Not started | | |
+| WAR export – Customer B | | ⬜ Not started | | |
+
+---
+
+## Common Gaps
+
+- **WAR run after go-live:** Control specifically says **before deployment**. If you only have post-go-live WARs, pick a customer where you can re-run before the next workload deploys.
+- **Generic "we use the WAR" claim, no exports:** The exported PDF, customer-named, is the evidence.
+- **All five pillars chosen but none completed:** Better to do **two pillars deeply** than five superficially.

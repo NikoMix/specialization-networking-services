@@ -1,0 +1,61 @@
+---
+title: "Knowledge Transfer Plan Template"
+description: Customer skills-uplift plan covering topology, runbook, IaC pipeline, and observability sessions.
+sidebar:
+  label: "KT Plan Template"
+  order: 4
+---
+
+## How to use
+Drives the formal handover from the delivery team to the customer's BAU team. Combined with [A.3.2 Plan for Skilling](../../module-a/3-2-plan-for-skilling/) evidence.
+
+---
+
+# \{Customer} — Knowledge Transfer Plan
+
+**Document owner:** \{Author} · **Version:** 0.1 · **Date:** \{YYYY-MM-DD}
+
+## 1. Audience
+| Role | Names | Existing skill level | Target skill level |
+|---|---|---|---|
+| Network ops | | Basic | Intermediate |
+| Security ops | | Basic | Intermediate |
+| Cloud platform team | | Intermediate | Advanced |
+| App teams (consumers) | | None | Basic |
+
+## 2. Session plan
+
+| # | Session | Audience | Duration | Format | Date | Recording link |
+|---|---|---|---|---|---|---|
+| 1 | Topology walk | Network + Security | 90 min | Live + recorded | | |
+| 2 | Runbook walkthrough | Network + Security | 120 min | Live + recorded | | |
+| 3 | IaC pipeline | Platform team | 90 min | Hands-on | | |
+| 4 | Observability (NSG flow logs, Connection Monitor, Network Insights) | All | 60 min | Live + recorded | | |
+| 5 | DDoS / incident playbook | Security + Ops | 60 min | Tabletop | | |
+| 6 | App-team consumer model (Private Endpoints, DNS, firewall asks) | App teams | 60 min | Live | | |
+
+## 3. Microsoft Learn paths
+
+| Audience | Learn path / certification |
+|---|---|
+| Network ops | [AZ-700 Designing & implementing Azure networking](https://learn.microsoft.com/training/courses/az-700t00) |
+| Cloud admins | [AZ-104](https://learn.microsoft.com/certifications/azure-administrator/) |
+| Security architects | [SC-100](https://learn.microsoft.com/certifications/cybersecurity-architect-expert/) |
+| App teams | [Networking fundamentals](https://learn.microsoft.com/training/paths/azure-networking-fundamentals/) |
+
+## 4. Post-deployment documentation index
+| Document | Location | Owner |
+|---|---|---|
+| HLD | | |
+| LLD | | |
+| Runbook | | |
+| IaC repo | | |
+| Decision log | | |
+| Recorded KT sessions | | |
+
+## 5. Acceptance
+| Role | Skill validation method | Sign-off date | Signatory |
+|---|---|---|---|
+| Network ops | Live runbook walkthrough scored ≥ 80% | | |
+| Cloud platform | IaC pipeline deploy unaided | | |
+| Security ops | Tabletop exercise — pass | | |
